@@ -5,8 +5,7 @@ App({
     styleTypeList: [],   
     payCurrent:1, 
     busId: '',
-    httpUrl:'https://www.xuanfuai.com/api/user',
-    // httpUrl:'http://192.168.10.20:8040/api/user',
+    httpUrl:'http://192.168.10.20:8040/api/user',
     url: {
       "登录": "/pages/minePages/login/login",
       "忘记密码": "/pages/minePages/forgetPass/forgetPass",
