@@ -1,0 +1,38 @@
+.list_item{
+  flex: 3;
+  width:100%;
+  height: 100%;
+  overflow: hidden;
+}
+.list_cell{
+  height:76rpx;
+  padding:0 20rpx;
+}
+.list_inner{
+  height:172rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: stretch;
+  padding:20rpx;
+}
+.list_img{
+  height:112rpx;
+  width:112rpx;
+  margin-right:20rpx;
+  border-radius: 50%;
+  border:1px solid #71CAA4;
+}
+.list_content{
+  height:100%;
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: stretch;
+}
+.item{
+  padding:0;
+}

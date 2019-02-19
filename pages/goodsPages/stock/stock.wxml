@@ -1,0 +1,54 @@
+
+<view class='body body_flex'>
+  <topSearch id='topSearch' holderText='输入商品名/编号' bind:searchTap="searchTap" showScan='true' bind:scanTap='searchTap'></topSearch>
+  <view class='full_two_item' >
+    <view class='full_two_cell'>
+        <view class='fc-main fs-32'>{{totalNum}} 件</view>
+        <view class='fc-333 fs-24'>库存数量</view>
+    </view>
+     <view class='full_two_cell'>
+        <view class='fc-main fs-32'>{{totalPrice}} 元</view>
+        <view class='fc-333 fs-24'>库存金额</view>
+    </view>
+  </view> 
+
+  <view class='list_tab bg-white s_row mt-20 bsf'>
+      <view class='list_tab_cell {{sort == "0" ? "active" : ""}}' data-type='0' catchtap='filterTap' >时间</view>
+      <view class='list_tab_cell {{sort == "1" ? "active" : ""}}' data-type='1' catchtap='filterTap'>库存数量</view>
+      <view class='list_tab_cell {{sort == "2" ? "active" : ""}}' data-type='2' catchtap='filterTap'>库龄</view>
+      <view class='list_tab_cell {{sort == "3" ? "active" : ""}}' data-type='3' catchtap='filterTap'>库存成本</view>
+  </view>
+  <view class='list_item' id='list_item'>
+    <scroll-view  class='list_scroll' scroll-y='true'  style='height:{{scrollH}}px' bindscrolltolower='moreData'>
+    <noData wx:if='{{noData}}'></noData>  
+      <view class='list_cell item' wx:for='{{pageData}}' wx:key='index' data-id='{{item.styleId}}' catchtap='checkDetail'> 
+          <view class='list_inner'>
+              <image class='list_head bra' src='{{item.styleHead}}'>  </image>
+            <view class='list_content'>
+              <text class='fc-33 fs-32'>{{item.styleName}}</text>
+              <text class='fc-70 fs-24'>款式编号：{{item.number}}</text>
+              <view class='s_row w_full'>
+                <text class='fc-70 fs-24'>当前库存量：<text class='fc-main'>{{item.stockNum}} 件</text> </text>
+                <text class='fc-70 fs-24'>库存金额：<text class='fc-red'>￥{{item.stockPrice}}</text> </text>
+              </view>
+              <view class='s_row w_full'>
+                <text class='fc-70 fs-24 '>单款单色：<text class='fc-main'>{{item.colorNum}} 个</text></text>
+                <text class='fc-70 fs-24'>在途数量：<text class='fc-main'>{{item.onRoadNum}} 件</text></text>
+              </view>
+            </view>
+          </view>
+
+      </view>
+   <loading isShow='{{noData}}'  noMore='{{noMore}}'></loading> 
+      
+  </scroll-view>
+  </view>
+
+</view>
+
+<dialog id='dialogCompon' content='确认收货？' bind:confirmEvent='confirmFn' isShow='{{showConfirm}}'></dialog>  
+
+
+
+
+

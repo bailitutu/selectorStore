@@ -1,0 +1,45 @@
+
+<view class='body body_flex'>
+  <topSearch id='topSearch' holderText='输入商品名/编号' bind:searchTap="searchTap"></topSearch>
+  <view class='list_tab bg-white s_row mt-20 bsf'>
+      <view class='list_tab_cell {{sort == "0" ? "active" : ""}}' data-type='0' catchtap='filterTap' >时间</view>
+      <view class='list_tab_cell {{sort == "1" ? "active" : ""}}' data-type='1' catchtap='filterTap'>库存</view>
+      <view class='list_tab_cell {{sort == "2" ? "active" : ""}}' data-type='2' catchtap='filterTap'>库龄</view>
+      <view class='list_tab_cell {{sort == "3" ? "active" : ""}}' data-type='3' catchtap='filterTap'>库存成本</view>
+  </view>
+  <view class='list_item' id='list_item'>
+    <scroll-view  class='list_scroll' scroll-y='true' style='height:{{scrollH}}px;' bindscrolltolower='moreData'>
+    <noData wx:if='{{noData}}'></noData>  
+      <view class='list_cell item' wx:for='{{pageData}}' wx:key='{{goods}}'>
+          <view class='shop_info s_row bb'>
+            <view class='shop_head bra'>
+              <image class='full' src='{{item.styleHead}}'></image>            
+            </view>
+            <view class='shop_inner '>
+              <text class='fc-33 fs-32'> {{item.styleName}}</text>
+              <text class='fc-70 fs-24'>款式编号：{{item.number}}</text>
+              <view class='s_row fs-24 fc-70'>
+                <view class='mw'>当前库存量：<text class='fc-main'>{{item.stockNum}} 件</text></view>
+                <view> 在途数量：<text class='fc-main'>{{item.onRoadNum}}  件</text></view>
+              </view>
+              <view class='s_row fs-24 fc-70'>
+                <view class='mw'>库存金额：<text class='fc-red'>￥{{item.stockPrice || 0}}</text></view>
+                <view> 单款单色： <text class='fc-main'>{{item.colorNum}} 个</text></view>
+              </view>
+            </view>
+
+          
+          </view>
+          <view class='price_info s_row fs-28 fc-33'>
+              <view class='fs-28'>零售价： <text class='fc-red mr-20'>￥{{item.discountPrice }}</text><text class='fc-red fs-22 s_line' >￥{{item.price || '0.00'}}</text></view>
+          </view>
+      
+      </view>
+
+   <loading isShow='{{noData}}'  noMore='{{noMore}}'></loading> 
+      
+  </scroll-view>
+  </view>
+
+</view>
+

@@ -1,0 +1,22 @@
+@import '../../salesPages/sales/sales';
+
+.scan_img{
+  width:43rpx;
+  height:43rpx;
+}
+.input_cell{
+  width:400rpx;
+  margin-left:80rpx;
+  flex: 3;
+}
+.scan_item{
+  height:100rpx;
+  padding-left:30rpx;
+}
+.sacn_btn{
+  height: 100%;
+  padding:0 30rpx;
+}
+
+
+

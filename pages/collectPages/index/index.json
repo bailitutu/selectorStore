@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "统计",
+  "usingComponents": {
+    "topTab": "/components/topTab/topTab",
+    "loading": "/components/loading/loading",
+    "sales": "/components/sales/sales",
+    "goItem": "/components/goItem/goItem",
+    "noData": "/components/noData/noData"
+  }
+}

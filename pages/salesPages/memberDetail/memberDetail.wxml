@@ -1,0 +1,49 @@
+<view class='body pb-20' wx:if='{{isReady}}'>
+  <view class='item'>
+    <view class='cell fs-28'>
+      <text class='fc-70 '>会员姓名</text>
+      <text class='fc-33'>{{memberInfo.name}}</text>
+    </view>
+        <view class='cell fs-28'>
+      <text class='fc-70 '>手机号</text>
+      <text class='fc-33'>{{memberInfo.phone}}</text>
+    </view>
+     <view class='cell fs-28'>
+      <text class='fc-70 '>会员等级</text>
+      <text class='fc-33'>{{memberInfo.level}}</text>
+    </view>
+        <view class='cell fs-28'>
+      <text class='fc-70 '>生日</text>
+      <text class='fc-33'>{{memberInfo.birthday}}</text>
+    </view>
+        <view class='cell fs-28'>
+      <text class='fc-70 '>性别</text>
+      <text class='fc-33'>{{memberInfo.sex}}</text>
+    </view>
+    <view class='cell fs-28'>
+      <text class='fc-70 '>会员号</text>
+      <text class='fc-33'>{{memberInfo.number}}</text>
+    </view>
+    <view class='cell fs-28'>
+      <text class='fc-70 '>注册日期</text>
+      <text class='fc-33'>{{memberInfo.resTime}}</text>
+    </view>
+    <view class='cell fs-28'>
+      <text class='fc-70 '>注册商户</text>
+      <text class='fc-33'>{{memberInfo.resBusName}}</text>
+    </view>
+  </view>
+
+  <view class='item '>
+      <view class='cell fs-28'>
+        <text class='fc-70 '>积分</text>
+        <text class='fc-33'>{{memberInfo.integral}}</text>
+      </view>
+        <colla title='消费记录' noTopBorder='true'  >
+            <view  class='s_row his_cell fs-28' wx:for='{{memberInfo.historyList}}' wx:key='history' > 
+              <text class='fc-70'>{{item.goodsId}}* {{item.goodsNum}}</text>
+              <text class='fc-33'>{{item.time}}</text>
+            </view>
+        </colla>
+  </view>
+</view>

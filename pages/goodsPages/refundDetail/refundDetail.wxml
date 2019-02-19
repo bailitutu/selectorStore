@@ -1,0 +1,69 @@
+<view class='body body_flex'>
+
+ <view class='item'>
+    <view class='cell fs-28'>
+      <text class='fc-70 input_label'>退货至</text>
+      <picker class='depotPicker' bindchange="bindPickerChange" value="{{depotIndex}}" range="{{depotArray}}">
+        <view class='fc-70 fs-28' hidden='{{depotId}}'>请选择</view>
+        <view class="picker fc-33 fs-28"  hidden='{{!depotId}}'>
+          {{depotArray[depotIndex]}}
+        </view>
+      </picker>
+
+    </view>
+    <view class='cell fs-28'>
+      <text class='fc-70 input_label'>快递公司</text>
+      <input type='text' class='input_cell' bindinput='inputChange' disabled='{{orderStatus > 1  && orderStatus < 8 }}'  data-param='loginstics' value='{{loginstics}}' placeholder='请输入' placeholder-class='fc-b2 fs-28'></input>
+    </view>
+    <view class='cell fs-28'>
+      <text class='fc-70 input_label'>快递单号</text>
+      <input type='text' class='input_cell' bindinput='inputChange' disabled='{{orderStatus > 1 && orderStatus < 8  }}'  data-param='loginsticsNumber' value='{{loginsticsNumber}}' placeholder='请输入' placeholder-class='fc-b2 fs-28'></input>
+    </view>
+    <view class=''>
+      <textarea class='input_area' maxlength='200' disabled='{{orderStatus > 1 && orderStatus < 8  }}'  bindinput='inputChange' data-param='refundReason' placeholder='请输入退款原因' fixed='true'  placeholder-class='fs-24 fc-b2' value='{{refundReason}}' bindinput='inputChange'></textarea>
+    </view>
+  </view>
+  <view class='color_sec_head mt-20 mb-20 plr-20'  >
+    <text class='fc-33 fs-32 plr-20'>退货商品</text>
+    <button class='normal_btn fc-fff addBtn active' catchtap='addTap' wx:if='{{orderStatus == 8 || !orderStatus}}'>添加</button>
+  </view>
+
+    <view class='content'>
+        <view class='mb-20'>
+          <view class='item' wx:for='{{goodsList}}' wx:key='goods' wx:for-item='goods' wx:for-index='goodsIndex'>
+            <view class='cell fs-28'>
+              <text class='input_label fc-70 '>单品编号</text>
+              <input type='text' class='input_cell' disabled='{{orderStatus > 1 && orderStatus < 8 }}' confirm-type='done' bindinput='goodsInput' value='{{goods.number}}'  data-index='{{goodsIndex}}' data-param='1'  placeholder='请输入单品编号' bindblur='confirmGoods' placeholder-class='fc-b2 fs-28'></input>
+              <view class='scan_item' wx:if='{{orderStatus == 8 || !orderStatus}}' catchtap='scanTap' data-index='{{goodsIndex}}'>
+                <image style='width:40rpx;height:40rpx;' src='/images/scan_black.png' ></image>
+              </view>
+            </view>
+            <view class='cell fs-28'>
+              <text class='input_label fc-70 '>数量</text>
+              <input  disabled='{{orderStatus > 1 && orderStatus < 8 }}'  type='number' class='input_cell' confirm-type='done'  placeholder='请输入'  value='{{goods.num}}'  bindinput='goodsInput' data-index='{{goodsIndex}}' data-param='2' bindblur='changeNum'  placeholder-class='fc-b2 fs-28'></input>
+              <text wx:if='{{orderStatus == 8 || !orderStatus}}' class='fc-main scan_item' catchtap='delTap' data-index='{{goodsIndex}}'>删除</text>
+            </view>
+          </view>
+        </view>
+    </view>  
+
+
+  <view class='foo bg-white bst'>
+    <view class='cell total_cell fs-28 '>
+      <view class='fc-33'>共计： <text class='fc-main'>{{goodsTotal || 0}}</text></view>
+      <view class='fc-33'>总金额：<text class='fc-red'>￥{{goodsTotalPrice || '0.00'}}</text></view>
+    </view>
+      <!-- 已添加未发货的 -->
+      <view class='btn_group bg-main s_row' wx:if='{{orderStatus == 8 || !orderStatus}}'>
+        <view class='s_row'>
+          <view class='normal_btn save_btn bg-white fc-main tac' catchtap='submit' data-type='1'>保存</view>
+          <view class='normal_btn del_btn bg-main tac' catchtap='deleteTap' hidden='{{ orderStatus != 8}}'>删除</view>
+        </view>
+        <view class='send_btn'  catchtap='submit' data-type='2'>发货</view>
+      </view>
+      <!-- 已发货的 -->
+      <view class='footer_full_btn bg-b2' wx:if='{{ orderStatus== 2 }}' >已发货</view>
+      <view class='footer_full_btn bg-b2' wx:if='{{ orderStatus== 3 }}' >已完成</view>
+  </view>
+</view>
+<dialog id='del_pop' content='确认删除？' bind:confirmEvent='confirmDelTap'></dialog>

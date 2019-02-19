@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "进出库流水",
+  "usingComponents": {
+    "loading": "/components/loading/loading",
+    "topSearch": "/components/search/search",
+    "noData": "/components/noData/noData"
+  }
+}

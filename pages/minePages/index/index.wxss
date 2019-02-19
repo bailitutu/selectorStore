@@ -1,0 +1,36 @@
+.userInfo{
+  width:100%;
+  text-align: center;
+  
+}
+.userInfo .userHead{
+  width:136rpx;
+  height:135rpx;
+  margin:54rpx auto 0;
+  border-radius: 50%;
+  overflow:hidden;
+}
+.labelList{
+  width:100%;
+  height:auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: space-around;
+  flex-wrap: wrap;
+  padding:0 40rpx;
+}
+.labelList .label-cell{
+  font-size:22rpx;
+  height:44rpx;
+  line-height: 40rpx;
+  border:1px solid #e2e2e2;
+  border-radius:8px;
+  padding:0 10rpx;
+  white-space: nowrap;
+  margin-top:24rpx;
+  margin-left:24rpx;
+}
+
+

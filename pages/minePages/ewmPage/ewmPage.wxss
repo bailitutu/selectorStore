@@ -1,0 +1,6 @@
+.ewm{
+  width:520rpx;
+  height:520rpx;
+  margin:120rpx auto 0;
+  display: block;
+}

@@ -1,0 +1,41 @@
+
+/* 筛选 */
+.list_tab{
+  height:88rpx;
+  width:100%; 
+  background: #fff;
+  display: flex;
+}
+
+.list_tab_cell{
+  font-size:28rpx;
+  color:#333;
+  padding:10rpx 40rpx;
+}
+.list_tab_cell.active{
+  color: #03A863;
+}
+/* 列表 */
+.list_item{
+  height:100%;
+  width: 100%;
+  flex: 2;
+  display: flex;
+  white-space: nowrap;
+}
+.list_item .list_scroll{
+  display: flex;
+  width: 100%;
+  white-space: nowrap;
+}
+.list_cell{
+  padding:0;
+}
+.list_head{
+  height: 100rpx;
+}
+
+.confirm_btn{
+  border:1px solid #03A863;
+  color: #03A863;
+}

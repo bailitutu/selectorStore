@@ -1,0 +1,148 @@
+<view class='body body_flex'>
+  <view class='toptal_item bg-white s_row'>
+    <view class='toptal_cell fc-70 fs-28'>
+        存销比： <text class='fc-main'>{{rateOne}}天</text>
+    </view>
+    <view class='toptal_cell fc-70 fs-28 bor'>
+       售罄率：<text class='fc-main'> {{rateTwo}}%</text> 
+    </view>
+  </view>
+  <view class='topTab'>
+    <topTab  id='topTab' tabOne='销售日报' tabTwo='现金结算'   bind:tabTap='tabTap'></topTab>
+  </view>
+  <!-- 销售日报 -->
+  
+  <view class='mt-20 bsf' hidden='{{ current != 1 }}'>
+      <goItem  title='统计报表' target='统计报表' ></goItem>  
+  </view>
+  <view class='list_item' id='list_item' hidden='{{ current != 1 }}'>
+  <scroll-view class='list_scroll' style='height:{{scrollH}}px'  scroll-y='true'  bindscrolltolower='moreSaleData'>
+    <noData wx:if='{{saleNoData}}'></noData>  
+    <view class='list_cell bra'  wx:for='{{saleList}}' wx:key='sale' >
+        <view  class='list_cell_head s_row'>
+          <image src='{{item.goodsHead}}' class='goodsImg bra'></image>
+          <view class='list_cell_head_info '>
+            <view class='fs-32 s_row'>
+                <text class='fc-33'> {{item.goodsName}}</text>
+            </view>
+            <view class='s_row'>
+              <text class='fc-70 fs-24'>{{item.goodsColor}}-{{item.goodsSize}}码 *{{item.goodsDayNum}}</text>
+              <text class='fc-70 fs-24'>销售额：<text class='fc-red fc-28'>￥{{item.goodsSalesDayPrice}}</text> </text>
+            </view>
+          </view>
+        </view>
+
+        <sales time='{{item.time}}'>
+         <view class='list_cell_li'>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>单品编号</text>
+                  <text class='fc-33 fs-28'>{{item.goodsId}}</text>
+                </view>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>产品类别</text>
+                  <text class='fc-33 fs-28'>{{item.goodsStyleType}}</text>
+                </view>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>零售价</text>
+                  <text class='fc-33 fs-28'>{{item.goodsPrice}}</text>
+                </view>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>折扣价</text>
+                  <text class='fc-33 fs-28'>{{item.goodsDiscountPrice}}</text>
+                </view>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>库存（件）</text>
+                  <text class='fc-33 fs-28'>{{item.goodsStock}}</text>
+                </view>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>在途（件）</text>
+                  <text class='fc-33 fs-28'>{{item.goodsOnRoad}}</text>
+                </view>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>进货数量（日）</text>
+                  <text class='fc-33 fs-28'>{{item.goodsPurchase}}</text>
+                </view>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>销量（总）</text>
+                  <text class='fc-33 fs-28'>{{item.goodsAllNum}}</text>
+                </view> 
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>销量（日）</text>
+                  <text class='fc-33 fs-28'>{{item.goodsDayNum}}</text>
+                </view> 
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>销售额（总）</text>
+                  <text class='fc-33 fs-28'>{{item.goodsSalesAllPrice}}</text>
+                </view> 
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>销售额（日））</text>
+                  <text class='fc-33 fs-28'>{{item.goodsSalesDayPrice}}</text>
+                </view> 
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>存销比</text>
+                  <text class='fc-33 fs-28'>{{item.savingsRatio}}天</text>
+                </view>   
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>售罄率</text>
+                  <text class='fc-33 fs-28'>{{item.soldOutRate}}%</text>
+                </view>           
+            </view>
+        </sales>
+    </view>
+    <loading isShow='{{saleNoData}}'  noMore='{{saleNoMore}}'></loading>
+  </scroll-view>
+  </view>
+  <!-- 现金结算 -->
+
+
+  <view class='list_tab bg-white mt-20 s_row' hidden='{{ current != 2 }}'>
+    <view class='list_tab_cell {{collectFilter == "1" ? "active" : ""}}' data-type='1' catchtap='filterTap' >今日</view>
+    <view class='list_tab_cell {{collectFilter == "2" ? "active" : ""}}' data-type='2' catchtap='filterTap'>昨日</view>
+  </view>
+
+  <view class='total_sec s_row bg-white bsf mt-20' hidden='{{ current != 2 }}'>
+    <view class='total_cell'>
+      <view class='fc-main fs-32'>￥{{SalesDayPrice || 0.00}}</view>
+      <view class='fc-70 fs-24 mt-20'>销售额（日）</view>
+    </view>
+    <view class='total_cell'>
+      <view class='fc-main fs-32'>￥{{paid || 0.00}}</view>
+      <view class='fc-70 fs-24 mt-20'>已支付（日）</view>
+    </view>
+    <view class='total_cell'>
+      <view class='fc-main fs-32'>￥{{toBePaid || 0.00}}</view>
+      <view class='fc-70 fs-24 mt-20'>待支付（日）</view>
+    </view>
+
+  </view>
+  <view class='list_item' id='list_item_2'  hidden='{{ current != 2 }}'>
+  <scroll-view class='list_scroll' style='height:{{scrollHH}}px'  scroll-y='true' bindscrolltolower='moreCollectData' >
+    <noData wx:if='{{collectNoData}}'></noData>  
+      <view class='list_cell item' wx:for='{{collectList}}' wx:key='collect'>
+        <view  class='list_cell_head s_row bb'>
+          <image src='{{item.goodsHead}}' class='goodsImg bra'></image>
+          <view class='list_cell_head_info '>
+            <view class='fs-32 s_row'>
+                <text class='fc-33'> {{item.goodsName}}</text>
+            </view>
+            <view class='s_row'>
+              <text class='fc-70 fs-24'>{{item.goodsColor}}-{{item.goodsSize}}码 *{{item.goodsNum}}</text>
+              <text class='fc-70 fs-24'>待支付：<text class='fc-red fc-28'>￥{{item.goodsToBePaid}}</text> </text>
+            </view>
+          </view>
+        </view>
+        <view class='cell '>
+            <text class='fc-b2 fs-24'>{{item.time}}</text>
+        </view>
+
+      </view>
+
+   <loading isShow='{{collectNoData}}'  noMore='{{collectNoMore}}'></loading>
+  </scroll-view >
+  </view>
+  <view class='s_row pay_item fs-28 bg-white bst' hidden='{{current != 2}}'>
+    <view class='fc-33'>待支付总计: <text class='fc-red'>￥{{toBePaidAll}}</text></view>
+    <button type='button' class='normal_btn bg-main fc-fff' disabled='{{ !toBePaidAll || toBePaidAll == "0" }}'  catchtap='payNow'>立即支付</button>
+  </view>
+
+</view>

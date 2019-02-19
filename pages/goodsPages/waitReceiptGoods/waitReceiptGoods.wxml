@@ -1,0 +1,17 @@
+<view class='body'>
+  <view  class='goodsInfo item' wx:for='{{list}}' wx:for-item='style' wx:for-index='styleIndex' wx:key='styleIndex'>
+    <view class='style_compo'>
+      <image class='bra' src='{{style.styleHead}}'></image>
+      <view class='style_info'> 
+        <view class='fs-28 fc-33'>{{style.styleName}}</view>
+        <text class='fs-24 fc-70'>款式编号：{{style.styleNumber}}</text>
+        <view class='style_detail fs-24  fc-70'>
+            <text style='margin-right:40rpx;'>总件数：<text class='fc-main'>{{style.num}}</text></text>
+            <text>单款单色：<text class='fc-main'>{{style.colorNum}} 个</text></text>
+        </view>
+      </view>
+    </view>  
+
+    <sizeList wx:for='{{ style.colorList}}'  wx:for-item='colorInfo' cell='{{colorInfo}}'  wx:key='colorIndex' ></sizeList>
+  </view>
+</view>

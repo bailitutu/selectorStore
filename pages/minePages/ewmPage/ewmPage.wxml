@@ -1,0 +1,3 @@
+<view class='body'>
+  <image class='ewm' src='{{ewmUrl}}'></image>
+</view>

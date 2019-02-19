@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "收银",
+  "usingComponents":{
+    "loading": "/components/loading/loading",
+    "noData": "/components/noData/noData",
+    "dialog": "/components/Dialog/dialog"
+  }
+}

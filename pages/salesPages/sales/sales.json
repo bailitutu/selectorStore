@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "流水",
+  "usingComponents": {
+    "topTab": "/components/topTab/topTab",
+    "loading": "/components/loading/loading",
+    "sales": "/components/sales/sales",
+    "noData": "/components/noData/noData"
+  }
+
+}

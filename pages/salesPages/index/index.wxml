@@ -1,0 +1,71 @@
+<view class='body'>
+<view class='go_item'  catchtap='goPage' data-url='消息中心'>
+  <view class='go_title'>消息中心</view>
+  <view class='s_row'>
+    <text class='fc-main fs-28 mr-10'>未读消息：{{pageData.noReadNum}}</text>
+     <image class='icon_go' src='/images/Shape.png'></image>
+  </view> 
+</view>
+
+  <view class='sale_info '>
+      <view class='sale_cell  c_col bra'>
+        <text class='fs-28 fc-main'>{{pageData.daySalesPrice || '0.00'}} 元</text>
+        <text class='fc-33 fs-28'>今日销售额</text>
+      </view>
+      <view class='sale_cell  c_col bra'>
+        <text class='fs-28 fc-main'>{{pageData.daySalesNum || 0}} 件</text>
+        <text class='fc-33 fs-28'>今日销售量</text>
+      </view>
+      <view class='sale_cell mt-20 c_col bra'>
+        <text class='fs-28 fc-main'>{{pageData.monthSalesPrice || '0.00'}}  元</text>
+        <text class='fc-33 fs-28'>当月销售额</text>
+      </view>
+      <view class='sale_cell mt-20 c_col bra'>
+        <text class='fs-28 fc-main'>{{pageData.monthSalesNum || 0}} 件</text>
+        <text class='fc-33 fs-28'>当月销售量</text>
+      </view>
+  </view>
+  <view class='item' catchtap='goPayPage'>
+      <view class='cell'>
+          <text class='fc-70 fs-28'>待付款</text>
+          <view class='s_row'>
+              <text class='fc-main fs-32 mr-10'>{{ pageData.waitPayPrice || '0.00'}} 元</text>
+              <image class='icon_go' src='/images/Shape.png'></image>
+          </view>
+      </view>
+  </view>  
+  <view class='item'>
+      <view class='cell' catchtap='goPage' data-url='销售单流水'>
+          <text class='fc-70 fs-28'>销售单流水</text>
+          <image class='icon_go' src='/images/Shape.png'></image>
+      </view>
+      <view class='cell' catchtap='goPage' data-url='会员管理'>
+          <text class='fc-70 fs-28' >会员管理</text>
+          <image class='icon_go' src='/images/Shape.png'></image>
+      </view>
+      <view class='cell' catchtap='goPage' data-url='退货'>
+          <text class='fc-70 fs-28'>客户退货</text>
+          <image class='icon_go' src='/images/Shape.png'></image>
+      </view>
+  </view> 
+
+  <view class='collect_btn bg-white ' catchtap='goPage' data-url='收银'>
+    <image class='collect_icon' src='/images/pay_icon.png'></image>
+    <text class='fs-32 fc-main mt-20'>收银</text>
+  </view>
+</view>
+
+<view class='wx_dialog_container'  wx:if='{{isOverdue}}'>
+  <view class='wx-mask'></view>
+  <view class='wx-dialog'>
+    <view class='wx-dialog-content'>
+      <text>您有一笔超出48小时未支付款项</text>
+      <view class='wx-dialog-inner mt-20 fs-32'>合计： <text class='fc-red'>￥{{pageData.overduePrice}}</text> </view>
+    </view>
+    <view class='wx-dialog-footer fc-main'>
+      <view class='wx-dialog-btn ' catchtap='payNow'>立即支付</view>
+    </view>
+  </view>
+</view>
+
+

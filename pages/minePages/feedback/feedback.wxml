@@ -1,0 +1,28 @@
+<view class='body'>
+  <view class='item'>
+    <textarea class='input_area' maxlength='200' placeholder='感谢您对我们的支持，期待您的宝贵意见......' placeholder-class='fs-24 fc-b2' bindinput='inputChange'></textarea>
+  </view>
+  <view class='item'>
+      <button class='cell fs-28 fc-70 bg-white contact'  open-type='contact'>
+        <text class=''>微信客服</text>
+           <!-- <contact-button size="40" session-from="weapp">微信客服</contact-button> -->
+          <image class='icon_go' src='/images/Shape.png'></image>
+      </button> 
+      <view class='cell fs-28' catchtap='callPhone' data-phone='{{pageData.phone}}'>
+        <text class='fc-70'>客户热线</text>
+        <view class='shop_ewm s_row'>
+          <text class='fc-33 mr-10'>{{pageData.phone || '无'}}</text>
+          <image class='icon_go' src='/images/Shape.png'></image>
+        </view>
+      </view> 
+      <view class='cell fs-28'>
+        <text class='fc-70'>服务时间</text>
+        <view class='shop_ewm s_row'>
+          <text class='fc-33'>{{pageData.time}}</text>
+        </view>
+      </view> 
+  </view>
+   <view class='plr-20 mb-20'>
+    <button type='button' class='f_btn mt-50' catchtap='submit' >提交</button>
+  </view> 
+</view>

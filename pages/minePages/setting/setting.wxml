@@ -1,0 +1,13 @@
+<view class='body'>
+  <view class='item'>
+    <view class='cell fs-28' catchtap='goChangePass'>
+      <text class='fc-70'>修改密码</text>
+      <image src='/images/Shape.png' class='icon_go'></image>
+    </view>
+  </view>
+
+   <view class='plr-20 mb-20'>
+    <button type='button' class='f_btn mt-50' catchtap='loginOutTap' >退出登录</button>
+  </view> 
+  <dialog id='dialogCompo' content="确认退出吗？" bind:confirmEvent="loginOut"></dialog>
+</view>

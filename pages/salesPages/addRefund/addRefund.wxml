@@ -1,0 +1,30 @@
+<view class='body body_flex'>
+    <view class='scan_item s_row bg-white bsf'>
+      <view class='fc-70 fs-28'> 小票编号</view>
+        <input type='text' class='input_cell fc-33 fs-28'  bindconfirm='getOrderData' confirm-type='search' value='{{labelId}}'  placeholder='请输入' bindinput='inputChange'></input>
+        <view class='sacn_btn s_row' catchtap='scanTap'>
+            <image class='scan_img ' src='/images/sao_icon.png'></image>
+        </view>
+    </view>
+    <scroll-view scroll-y='true' class='list_item'>
+       <noData wx:if='{{noData}}'></noData>  
+      <view class='item list_cell' wx:for='{{list}}' wx:key='index' catchtap='checkDetail' data-id='{{item.goodsId}}'>
+        <view  class='list_cell_head s_row'>
+          <image src='{{item.goodsHead}}' class='goodsImg bra'></image>
+          <view class='list_cell_head_info '>
+            <view class='fs-32 s_row'>
+                <text class='fc-33'> {{item.goodsName}}</text>
+            </view>
+            <view class='s_row'>
+              <text class='fc-70 fs-24'>{{item.goodsColor}}-{{item.goodsSize}}码 *{{item.goodsNum}}</text>
+              <text class='fc-70 fs-24'>实付款：<text class='fc-red fc-28'>￥{{item.goodsPrice}}</text> </text>
+            </view>
+          </view>
+        </view>
+      </view>
+      
+      <loading isShow='{{noData}}'  noMore='{{noMore}}'></loading>
+    </scroll-view>
+</view>
+
+

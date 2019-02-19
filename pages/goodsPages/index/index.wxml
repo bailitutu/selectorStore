@@ -1,0 +1,54 @@
+<view class='body body_flex'>
+  <view class='goods_sec'>
+      <view class='goods_sec_row s_row'>
+        <view class='goods_sec_cell bra' catchtap='goPage' data-url='库存查询'>
+            <image style='width:74rpx;height:72rpx;' src='/images/goods_sec_1.png'></image>
+            <text class='fc-33 fs-28'>库存查询</text>
+        </view>
+        <view class='goods_sec_cell bra'  catchtap='goPage' data-url='库存预警'>
+            <image style='width:74rpx;height:72rpx;' src='/images/goods_sec_2.png'></image>
+            <text class='fc-33 fs-28'>库存预警</text>
+        </view>
+      </view>
+      <view class='goods_sec_row s_row'>
+        <view class='goods_sec_cell bra' catchtap='goPage' data-url='折扣商品'>
+            <image style='width:64rpx;height:76rpx;' src='/images/goods_sec_3.png'></image>
+            <text class='fc-33 fs-28'>折扣商品</text>
+        </view>
+        <view class='goods_sec_cell bra' catchtap='goPage' data-url='出入库流水'>
+            <image style='width:66rpx;height:72rpx;' src='/images/goods_sec_4.png'></image>
+            <text class='fc-33 fs-28 crk'>出入库流水</text>
+        </view>
+      </view>
+
+
+  </view>
+  <view class='goods_ac'>
+      <view class='s_row'>
+          <view class='goods_ac_cell' catchtap='goPage' data-url='待收货'>
+             <text class='ac_top_tip fs-22 fc-fff' hidden='{{!pageData.waitReceiptGoods}}'>{{pageData.waitReceiptGoods}}</text> 
+             <view class='full c_col'> 
+                <image class='ac_cell_icon' src='/images/goods_act_1.png'></image>
+                <text class='fc-33 fs-28'>待收货</text>
+             </view> 
+          </view>
+          <view class='goods_ac_cell ' catchtap='goPage' data-url='调货'>
+            <text class='ac_top_tip fs-22 fc-fff' hidden='{{!pageData.deployGoods}}'>{{pageData.deployGoods}}</text> 
+              <view class='full c_col'> 
+                  <image class='ac_cell_icon' src='/images/goods_act_2.png'></image>
+                  <text class='fc-33 fs-28'>调货</text>
+              </view> 
+          </view>
+          
+          <view class='goods_ac_cell ' catchtap='goPage' data-url='商品退货'>
+            <text class='ac_top_tip fs-22 fc-fff' hidden='{{!pageData.refundGoods}}'>{{pageData.refundGoods}}</text> 
+              <view class='full c_col'> 
+                  <image class='ac_cell_icon' src='/images/goods_act_3.png'></image>
+                  <text class='fc-33 fs-28'>退货</text>
+              </view> 
+          </view>
+      </view>
+  
+  </view>
+
+</view>

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "添加退货",
+    "usingComponents": {
+      "dialog": "/components/Dialog/dialog"
+    }
+}

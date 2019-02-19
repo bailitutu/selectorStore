@@ -1,0 +1,82 @@
+{
+  "pages": [
+    "pages/salesPages/index/index",
+    "pages/salesPages/paySuccess/paySuccess",
+    "pages/salesPages/addRefund/addRefund",
+    "pages/goodsPages/refund/refund",
+    "pages/minePages/index/index",
+    "pages/salesPages/collect/collect",
+    "pages/collectPages/index/index",
+    "pages/goodsPages/index/index",
+    "pages/goodsPages/stockDetail/stockDetail",
+    "pages/goodsPages/deploy/deploy",
+    "pages/salesPages/member/member",
+    "pages/goodsPages/stockHistoryDetail/stockHistoryDetail",
+    "pages/goodsPages/stockHistory/stockHistory",
+    "pages/goodsPages/orderFeedback/orderFeedback",
+    "pages/goodsPages/waitReceiptDetail/waitReceiptDetail",
+    "pages/goodsPages/waitReceiptGoods/waitReceiptGoods",
+    "pages/goodsPages/waitReceipt/waitReceipt",
+    "pages/goodsPages/stockWarn/stockWarn",
+    "pages/goodsPages/discount/discount",
+    "pages/salesPages/scanPay/scanPay",
+    "pages/minePages/login/login",
+    "pages/salesPages/newsDetail/newsDetail",
+    "pages/salesPages/addMember/addMember",
+    "pages/salesPages/memberDetail/memberDetail",
+    "pages/salesPages/news/news",
+    "pages/minePages/feedback/feedback",
+    "pages/minePages/ewmPage/ewmPage",
+    "pages/minePages/setting/setting",
+    "pages/minePages/shopInfo/shopInfo",
+    "pages/minePages/changePass/changePass",
+    "pages/minePages/forgetPass/forgetPass",
+    "pages/minePages/setPass/setPass",
+    "pages/goodsPages/deployDetail/deployDetail",
+    "pages/goodsPages/refundDetail/refundDetail",
+    "pages/goodsPages/stock/stock",
+    "pages/salesPages/sales/sales",
+    "pages/collectPages/collectList/collectList",
+    "pages/salesPages/searchGood/searchGood",
+    "pages/salesPages/addRefundDetail/addRefundDetail",
+    "pages/minePages/spread/spread"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#03A863",
+    "navigationBarTitleText": "选服-商户端",
+    "navigationBarTextStyle": "#fff"
+  },
+  "tabBar": {
+    "backgroundColor": "#03A863",
+    "color": "#CCEDDF",
+    "selectedColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/salesPages/index/index",
+        "text": "销售",
+        "iconPath": "images/tab_style.png",
+        "selectedIconPath": "images/tab_style_active.png"
+      },
+      {
+        "pagePath": "pages/goodsPages/index/index",
+        "text": "商品",
+        "iconPath": "images/tab_order.png",
+        "selectedIconPath": "images/tab_order_active.png"
+      },
+      {
+        "pagePath": "pages/collectPages/index/index",
+        "text": "统计",
+        "iconPath": "images/tab_shop.png",
+        "selectedIconPath": "images/tab_shop_active.png"
+      },
+      {
+        "pagePath": "pages/minePages/index/index",
+        "text": "我的",
+        "iconPath": "images/tab_mine.png",
+        "selectedIconPath": "images/tab_mine_active.png"
+      }
+    ]
+  }
+}

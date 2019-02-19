@@ -1,0 +1,64 @@
+.content{
+  flex: 3;
+  height: 100%;
+  overflow-y:auto;
+  overflow-x:hidden;
+}
+.input_cell{
+  width:100%;
+  flex: 3;
+  color:#333333;
+}
+.input_label{
+  width:240rpx;
+}
+.input_area{
+  height:100rpx;
+  padding:20rpx 0;
+  width:100%;
+  font-size:26rpx;
+}
+
+.addBtn{
+  background:#b2b2b2;
+}
+.addBtn.active{
+  background:#03a863;
+}
+
+.foo{
+  z-index: 1000;
+}
+
+.total_cell{
+  padding:0 40rpx;
+}
+.scan_item{
+  padding:20rpx;
+}
+.depotPicker{
+  width:100%;
+  flex: 3;
+}
+.bg-b2{
+  background:#b2b2b2;
+}
+.btn_group{
+  height: 90rpx;
+  width: 100%;
+  padding:15rpx 0 15rpx 40rpx;
+}
+.del_btn{
+  border:1px solid #fff;
+  color:#fff;
+  margin-left:40rpx;
+}
+.send_btn{
+  height:100%;
+  padding: 0 100rpx;
+  text-align: center;
+  color:#fff;
+  font-size:32rpx;
+  line-height: 60rpx;
+  border-left:1px solid #fff; 
+}

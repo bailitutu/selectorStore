@@ -1,0 +1,134 @@
+ <view class='body body_flex'>
+  <view class='goods_list_box' id='goods_list_box'>
+    <scroll-view class='goods_list' scroll-y='true' style='height:{{scrollH}}px'>
+     <noData wx:if='{{!goodsList.length}}'  title='空空如也~'></noData>  
+      <view class='goods_cell item mb-20' wx:for='{{goodsList}}' wx:key='goods' wx:for-index='goodsIndex' wx:if='{{goodsList.length > 0}}' >
+        <view class='list_cell' >
+          <view class='list_head bb s_row' >
+            <image class='list_img bra' src='{{item.goodsHead}}'></image>
+            <view class='list_info '>
+                <view class='fc-33 fs-32'>{{item.goodsName}}</view>
+                <view class=' w_full s_row fc-70 fs-24'>
+                  <text> {{item.goodsColorName || 1000}}-{{item.goodsSizeName || 40}}码</text>
+                  <text class='fc-33 fs-28'> 零售价：<text class='fc-red'>￥{{item.goodsPrice || 0.00}}</text> </text>
+                </view>
+            </view>
+          </view>
+          <view class='list_footer fs-28 cell' >
+            <text class='fc-70 '>单品编号：{{item.number}}</text>
+            <view class='addBtn_item ' catchtap='deleteGoods' data-index='{{goodsIndex}}'>
+              <text class='fc-main' >删除</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class='collect_item bg-white bst'>
+    <view class='scan_item cell' >
+      <view class='scan_cell tac' catchtap='scanToAddGoods'>
+          <view class='scan_btn'>
+            <image class='icon_scan' src='/images/sao_icon.png'></image>
+            <text class='fc-main fs-28'>扫一扫</text>
+          </view>
+      </view>
+      <view class='add_item' catchtap='showAddTap' >
+        <image class='icon_add' src='/images/icon_add.png'></image>
+      </view>
+    </view> 
+    <view class='input_cell cell '>
+      <view class='s_row disco'>
+          <text class='fc-33 fs-28 input_label'>会员手机号：</text>
+          <input type='number' bindinput='inputChange' bindblur='changeMemberPhone'  value='{{memberPhone}}' data-type='memberPhone' class='input_sec fs-28 fc-33' maxlength='11' placeholder='请输入会员手机号' placeholder-class='fc-b2 fs-28'></input>  
+      </view>
+      <view class='s_row '>
+        <text class='fc-33 fs-28'>折扣：<text class='fc-main'>{{memberDis ? memberDis +'%' : '无' }}</text></text>
+      </view>
+    </view>
+    <view class='cell plr-20 priceCell'>
+      <view class='s_row'>
+        <text class='fc-33 fs-28'>共计： <text class='fc-main'>{{goodsList.length}}</text> </text>
+      </view>
+      <view class='s_row'>
+          <text class='fc-33 fs-28'>总金额：<text class='fc-red'>￥{{totalPrice || 0.00}}</text>      </text> 
+      </view>
+    </view>
+    <view class='cell plr-20 cell_right'>
+      <view class='s_row'>
+          <text class='fc-33 fs-28'>结算： <text class='fc-red'>￥{{endPrice || 0.00}}</text> </text> 
+      </view>
+    </view>
+    <view class='cell'>
+      <view class='pay_cell'  catchtap='selectPay' data-param='1'>
+          <view class='pay_icon'>
+            <image src='/images/icon_selected_no.png' hidden='{{payWay == 1}}'></image>
+            <image src='/images/icon_selected.png' hidden='{{payWay != 1}}'></image>
+          </view>
+          <text class='fc-70 fs-28'>微信</text>
+      </view>
+      <view class='pay_cell' catchtap='selectPay' data-param='2'>
+          <view class='pay_icon' >
+            <image src='/images/icon_selected_no.png' hidden='{{payWay == 2}}'></image>
+            <image src='/images/icon_selected.png' hidden='{{payWay != 2}}'></image>
+          </view>
+          <text class='fc-70 fs-28'>支付宝</text>
+      </view>
+      <view class='pay_cell'  catchtap='selectPay' data-param='3'>
+          <view class='pay_icon'>
+            <image src='/images/icon_selected_no.png' hidden='{{payWay == 3}}'></image>
+            <image src='/images/icon_selected.png' hidden='{{payWay != 3}}'></image>
+          </view>
+          <text class='fc-70 fs-28'>现金</text>
+      </view>
+    </view>
+
+    <button type='button' class='footer_full_btn' catchtap='collectTap' disabled='{{goodsList.length == 0}}'>收银</button>
+
+  </view>
+
+</view>
+  <dialog id='dialogCompo' content="确认收银吗？" bind:confirmEvent="submit"></dialog>
+
+<view class='pop_item' id='pop_item' hidden='{{!showAdd}}' >
+  <view class='pop_mask' catchtap='hideModal'></view>
+  <view class='pop_content bg-white ' animation='{{animationData}}' >
+    <view class='pop_head bb'>
+      <view class='pop_title fc-33 fs-32 tac'>选择商品</view>
+      <view class='close_btn' catchtap='hideModal'>
+        <image class='icon_close' src='/images/icon_close.png'></image>
+      </view>
+    </view>
+    <view class='pop_search cell bb'>
+      <view class='searchInput'>
+          <input class='fc-33 fs-28 searchInput ' type='text' confirm-type='search' placeholder='请输入单品编号' placeholder-class='fc-b2 fs-28' bindinput='inputChange' bindconfirm='search' value='{{query}}' data-type='query'> </input>
+      </view>
+      <view class='normal_btn fc-main bg-white search_btn' catchtap='search'>搜索</view>
+    </view>
+
+      <scroll-view class='list_item' scroll-y='true' bindscrolltolower='moreData'>
+
+        <noData wx:if='{{noData}}' title='暂无数据~'></noData>  
+          <view class='list_cell bb plr-20' wx:for='{{list}}'  wx:key='index' wx:for-index='listIndex'>
+            <view class='list_head bb s_row' >
+              <image class='list_img bra' src='{{item.goodsHead}}'></image>
+              <view class='list_info '>
+                  <view class='fc-33 fs-32'>{{item.goodsName}}</view>
+                  <view class=' w_full s_row fc-70 fs-24'>
+                    <text> {{item.goodsColorName}}-{{item.goodsSizeName}}码</text>
+                    <text class='fc-33 fs-28'> 零售价：<text class='fc-red'>￥{{item.goodsPrice}}</text> </text>
+                  </view>
+              </view>
+            </view>
+            <view class='list_footer fs-28 cell' >
+              <text class='fc-70 '>单品编号：{{item.number}}</text>
+              <view class='addBtn_item ' catchtap='addGoods' data-index='{{listIndex}}'>
+                <text class='fc-main' >添加</text>
+              </view>
+            </view>
+          </view> 
+          <loading isShow='{{noData}}'  noMore='{{noMore}}'></loading>
+      </scroll-view>
+  </view>
+</view>
+

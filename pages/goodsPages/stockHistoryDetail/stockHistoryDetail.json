@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "流水详情",
+  "usingComponents":{
+    "sizeList": "/components/sizeList/sizeList"
+  }
+}

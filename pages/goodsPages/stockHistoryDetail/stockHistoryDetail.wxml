@@ -1,0 +1,29 @@
+
+<view class='body'>
+  <view class='item'>
+    <view class='cell fs-28'> 
+      <text class='fc-70 '>商品名称</text>
+      <text class='fc-33 '>{{pageData.styleName}}</text>
+    </view>
+    <view class='cell fs-28'> 
+      <text class='fc-70 '>款式编号</text>
+      <text class='fc-33 '>{{pageData.styleId}}</text>
+    </view>
+    <view class='cell fs-28'> 
+      <text class='fc-70 '>操作时间</text>
+      <text class='fc-33 '>{{pageData.operateTime}}</text>
+    </view>
+    <view class='cell fs-28'> 
+      <text class='fc-70 '>操作类型</text>
+      <text class='fc-33 '>{{pageData.operateType}}</text>
+    </view>
+  </view>
+  <view class='item colorList'>
+    <view class='cell fs-28 plr-20'> 
+      <text class='fc-70 '>总数</text>
+      <text class='fc-33 '>{{pageData.total}}件</text>
+    </view>
+    <sizeList wx:for='{{ pageData.colorList}}'  wx:for-item='colorInfo' cell='{{colorInfo}}'  wx:key='colorIndex' ></sizeList>  
+  </view>
+
+ </view>

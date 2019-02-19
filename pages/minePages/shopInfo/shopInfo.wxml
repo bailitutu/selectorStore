@@ -1,0 +1,54 @@
+<view class='body'>
+    <view class='item'>
+      <view class='cell fs-28'>
+          <text class='fc-70'>商户名</text>
+          <text class='fc-33'>{{pageData.busName}}</text>
+      </view>
+      <view class='cell fs-28'>
+          <text class='fc-70'>商户号</text>
+          <text class='fc-33'>{{pageData.busNumber}}</text>
+      </view>
+      <view class='cell fs-28'>
+          <text class='fc-70'>地址</text>
+          <text class='fc-33'>{{pageData.busAddress}}</text>
+      </view>
+      <view class='cell fs-28'>
+          <text class='fc-70'>负责人</text>
+          <text class='fc-33'>{{pageData.busPeople}}</text>
+      </view>
+      <view class='cell fs-28'>
+          <text class='fc-70'>联系电话</text>
+          <text class='fc-33'>{{pageData.busPhone}}</text>
+      </view>
+    </view>
+
+    <view class='item'>
+      <view class='cell fs-28' wx:if='{{pageData.busAlipay}}' catchtap='checkEwm' data-ewm='{{pageData.busAlipay}}' data-type='1'>
+        <text class='fc-70'>支付宝</text>
+        <view class='shop_ewm s_row'>
+          <image class='ewm mr-10'  src='{{pageData.busAlipay}}'></image>
+          <image class='icon_go' src='/images/Shape.png'></image>
+        </view>
+      </view> 
+      <view class='cell fs-28' wx:if='{{pageData.busWxChat}}' catchtap='checkEwm' data-ewm='{{pageData.busWxChat}}' data-type='2'>
+        <text class='fc-70'>微信</text>
+        <view class='shop_ewm s_row'>
+          <image class='ewm mr-10'  src='{{pageData.busWxChat}}'></image>
+          <image class='icon_go' src='/images/Shape.png'></image>
+        </view>
+      </view> 
+       <view class='cell fs-28' wx:if='{{pageData.busBank}}'>
+          <text class='fc-70'>开户行</text>
+          <text class='fc-33'>{{pageData.busBank}}</text>
+      </view>
+      <view class='cell fs-28'  wx:if='{{pageData.busCardNumber}}'>
+          <text class='fc-70'>卡号</text>
+          <text class='fc-33'>{{pageData.busCardNumber}}</text>
+      </view>
+      <view class='cell fs-28'  wx:if='{{pageData.busCardPeople}}'>
+          <text class='fc-70'>持卡人</text>
+          <text class='fc-33'>{{pageData.busCardPeople}}</text>
+      </view>
+    </view>
+
+</view>

@@ -1,0 +1,84 @@
+.content{
+  flex: 3;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.icon_success{
+  width:172rpx;
+  height:172rpx;
+  margin:60rpx 0 40rpx;
+}
+.success_text{
+  font-size: 40rpx;
+}
+.shop_logo{
+  padding:20rpx 0;
+}
+.icon_logo{
+  width:172rpx;
+  height:154rpx;
+}
+
+.print_btn{
+  border:1px solid #03a863;
+
+}
+/* 商品信息 */
+.goods_item{
+  padding-top:10rpx;
+}
+.goods_cell{
+  border-bottom:1px solid #e2e2e2 ;
+}
+.goods_cell:last-child{
+  border: none;
+}
+
+.goods_old_price{
+  height:60rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.goods_info{
+  height:60rpx;
+  border:none;
+}
+.goods_total{
+  height:88rpx;
+}
+.price_text{
+  min-width:150rpx;
+}
+.del_line{
+  text-decoration:line-through;
+}
+
+
+
+
+
+
+/* 底部按钮 */
+.btn_group{
+  height:88rpx;
+  padding:8rpx 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn_group .btn_cell{
+  height:100%;
+  width:50%;
+  text-align: center;
+  line-height: 72rpx;
+}
+.btn_group .btn_cell:first-child{
+  border-right:1px solid #fff;
+
+}

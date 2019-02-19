@@ -1,0 +1,40 @@
+<view class='body plr-20'>
+    <view class='form_item'>
+      <form>
+        <view class='form_section'>
+            <input type='text' class='fs-28' confirm-type='done' bindinput='inputChange'  data-attr='memberName' placeholder="请输入会员姓名"   auto-focus/>
+        </view>
+        <view class="form_section">
+          <input type='number' class='fs-28' bindinput='inputChange'  data-attr='memberPhone' confirm-type='done' placeholder="请输入会员手机号"  maxlength='11'/>
+          <button type='button' class='getCode' catchtap='sendCode' wx:if='{{!hasSend}}' >获取验证码</button>
+          <button type='button' class='getCode disabled fc-70' hover-class='none'  wx:else>{{time}}s后重发</button>
+        </view>
+        <view class="form_section">
+          <input type='number' class='fs-28' bindinput='inputChange'  data-attr='code' confirm-type='next'  placeholder="请输入短信验证码"  maxlength='6'/>
+        </view>
+        <view class='form_section s_row'>
+            <text class='fc-33 fs-28 input_tip'>生日</text>
+
+            <picker class='picker_item' mode="date" value="{{memberBirthday}}" start="1915-09-01" end="{{today}}" bindchange="bindDateChange">
+              <view class="picker fs-28 fc-b2" hidden='{{ memberBirthday}}'>
+                  请设置会员生日
+               </view>
+              <view class="picker fs-28 fc-33" hidden='{{!memberBirthday}}'>
+               {{memberBirthday}}
+              </view>
+            </picker>
+        </view>
+        <view class='form_section s_row'>
+           <text class='fc-33 fs-28 input_tip'>性别</text>
+           <view class='fs-28 sex_box' catchtap='selSex' > {{memberSex}}</view>
+        </view>
+
+
+          <button type='button' class='f_btn mt-100' form-type='submit' catchtap='submit'>保存</button>
+      </form>
+  </view>
+</view>
+
+
+
+

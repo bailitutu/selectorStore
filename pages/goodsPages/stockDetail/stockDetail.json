@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "款式库存详情",
+    "usingComponents": {
+      "sizeList": "/components/sizeList/sizeList",
+      "colla": "/components/colla/colla"
+    }
+}

@@ -1,0 +1,79 @@
+<view class='body'>
+     <view class='item goods_info s_row'> 
+        <view class='goods_img bra oh'>
+          <image class='full' src='{{goodsInfo.goodsHead}}'></image>
+        </view>
+        <view class='goods_inner'>
+          <view class='fc-33 fs-32'>{{goodsInfo.goodsName}}</view>
+          <view class='fc-70 fs-24 goods_num s_row'>
+            <text > {{goodsInfo.goodsColor}}-{{goodsInfo.goodsSize}}码*{{goodsInfo.goodsNum}} </text>
+            <text> 可退件数：<text class='fc-main'>{{goodsInfo.goodsRefundNum}}</text></text>
+          </view>
+        
+        </view>
+    </view>
+     <view class='item'>
+      <view class='cell fs-28'>
+        <text class='fc-70 '>付款金额</text>
+        <text class='fc-33'>{{pageData.price}}</text>
+      </view>
+      <view class='cell fs-28'>
+        <text class='fc-70 '>付款方式</text>
+        <text class='fc-33'>{{pageData.payType}}</text>
+      </view>
+      <view class='cell fs-28'>
+        <text class='fc-70 '>是否完成利润分成</text>
+        <text class='fc-33 '>{{pageData.isComplete}}</text>
+      </view>
+      <view class='cell fs-28'>
+        <text class='fc-70 '>下单时间</text>
+        <text class='fc-33 '>{{pageData.createTime}}</text>
+      </view>
+          <view class='cell fs-28'>
+        <text class='fc-70 '>客户名称</text>
+        <text class='fc-33'>{{pageData.memberName}}</text>
+      </view>
+      <view class='cell fs-28'>
+        <text class='fc-70 '>手机号</text>
+        <text class='fc-33'>{{pageData.memberPhone}}</text>
+      </view>
+    </view>
+     <!-- <view class='item'>
+      <view class='cell fs-28'>
+        <text class='fc-70 '>客户名称</text>
+        <text class='fc-33'>{{pageData.memberName}}</text>
+      </view>
+      <view class='cell fs-28'>
+        <text class='fc-70 '>手机号</text>
+        <text class='fc-33'>{{pageData.memberPhone}}</text>
+      </view>
+      
+    </view> -->
+
+
+
+     <view class='item'>
+      <view class='cell fs-28' catchtap='selectNum'>
+        <text class='fc-70 picker_label'>退货数量</text>
+        <picker class='refundPicker' bindchange="selectNum" value="{{index}}" range="{{array}}">
+          <view class="picker">
+            {{array[index]}}
+          </view>
+        </picker>
+      </view>
+      <view>
+
+        <textarea  class='fc-33 fs-28 refundReason' fixed='true'  placeholder='备注退款原因' placeholder-class='fc-b2 fs-28'></textarea>
+      </view>
+
+    </view>
+    
+  <view class='plr-20 mb-20'>
+    <button type='button' class='f_btn mt-30' catchtap='submitTap' >确认退货</button>
+  </view> 
+
+</view>
+  <dialog id='dialogCompo' content="确认退货吗？" bind:confirmEvent="submitFn"></dialog> 
+
+ 
+ 

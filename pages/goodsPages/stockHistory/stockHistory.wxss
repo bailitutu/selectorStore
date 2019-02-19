@@ -1,0 +1,62 @@
+/* 筛选 */
+.filter_item{
+  height:88rpx;
+  background: #fff;
+}
+.filter_item .filter_cell{
+  margin-left: 40rpx;
+  width:160rpx;
+  height:100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.filter_item .filter_cell>image{
+  width: 26rpx;
+  height:14rpx;
+}
+.filter_item .filter_cell .filter_type{
+  width:120rpx;
+  text-align: center;
+}
+
+
+
+/* 列表 */
+.list_item{
+  height:100%;
+  width: 100%;
+  flex: 2;
+  display: flex;
+}
+.list_scroll{
+  width:100%;
+  white-space: nowrap;
+}
+
+.list_cell{
+  padding:0;
+}
+.list_inner{
+  height:170rpx;
+  padding:20rpx;
+}
+.list_img{
+  width:120rpx;
+  height: 120rpx;
+  margin-right:20rpx;
+}
+.list_content{
+  width: 100%;
+  height: 100%;
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: stretch;
+}
+.w_full{
+  width:100%;
+}

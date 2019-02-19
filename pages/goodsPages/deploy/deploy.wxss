@@ -1,0 +1,40 @@
+@import '/components/Dialog/dialog';
+
+.list_item{
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  flex: 3;
+}
+.list_scroll{
+  width:100%;
+  white-space: nowrap;
+}
+.list_cell{
+  padding:0;
+}
+.list_sec{
+  height: 100rpx;
+  padding:0 20rpx;
+}
+.con_btn{
+  border:1px solid #03a863;
+  color:#03a863;
+  background: #fff;
+  margin-right:20rpx;
+}
+.send_btn{
+  background: #03a863;
+  color: #fff;
+}
+.input_cell{
+  height: 88rpx;
+}
+.input_cell input{
+  text-align: left;
+  height: 100%;
+  line-height: 36rpx;
+}
+.wx-dialog-content{
+  padding:60rpx;
+}

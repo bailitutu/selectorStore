@@ -1,0 +1,31 @@
+  <view class='sizeList_compo' >
+    <view class='size_title' catchtap='showTap'>
+      <view class='size_color'>
+          <text class='color_label' style='background:{{ cell.color}};'></text>
+          <text class='fc-33 fs-28'>{{ cell.colorName}}</text>
+      </view>
+      <view class='size_total'>
+        <view class='sizeNum fc-70'> 合计：<text class='fc-33'>{{total}}件</text></view>
+        <image src='/images/down.png' class='{{ isShow ? "rotate" : "" }}'></image>
+      </view>
+    </view>
+    <view class='sizeList_inner' hidden='{{!isShow}}'>
+      <view class='size_list_cell fs-28 bb' wx:for='{{cell.sizeList}}' wx:key='sizeKey' wx:for-index='infoIndex' wx:for-item='size' catchtap='showInfo' data-index='{{infoIndex}}'> 
+        <text class='fc-70 '>{{ size.name}}  {{size.number}}</text>
+        <text class='fc-33'>{{size.num}}件</text>
+      </view>
+    </view>
+
+    <view class='pop_item' id='pop_item' wx:if='{{showInfo}}' >
+      <view class='pop_mask' catchtap='hideInfo'></view>
+      <view class='pop_content bg-white bra' animation='{{animationData}}' >
+          <view class='noInfo fs-28 fc-70' wx:if='{{infoList.length == 0}}'>暂无数据!</view>
+          <view class='cell s_row fs-28 plr-20' wx:for='{{infoList}}' wx:if='{{infoList.length > 0}}' hidden='{{info.detail == 0 || !info.detail}}' wx:key='info' wx:for-item='info'>
+            <text class='fc-33'>{{info.name}}</text>
+            <text class='fc-70'>{{info.detail}} cm</text>
+          </view>
+      </view>
+
+    </view>
+
+  </view>

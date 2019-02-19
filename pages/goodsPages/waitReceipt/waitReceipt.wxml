@@ -1,0 +1,46 @@
+
+<view class='body body_flex'>
+  <topSearch id='topSearch' holderText='输入商品名/编号' bind:searchTap="searchTap"></topSearch>
+  <view class='list_tab bg-white s_row mt-20 bsf'>
+      <view class='list_tab_cell {{sort == "0" ? "active" : ""}}' data-type='0' catchtap='filterTap' >时间</view>
+      <view class='list_tab_cell {{sort == "1" ? "active" : ""}}' data-type='1' catchtap='filterTap'>仓库发出</view>
+      <view class='list_tab_cell {{sort == "2" ? "active" : ""}}' data-type='2' catchtap='filterTap'>商户发出</view>
+      <view class='list_tab_cell {{sort == "3" ? "active" : ""}}' data-type='3' catchtap='filterTap'>补货</view>
+  </view>
+
+
+  <view class='list_item' id='list_item'>
+    <scroll-view  class='list_scroll' scroll-y='true'  style='height:{{scrollH}}px' bindscrolltolower='moreData'>
+    <noData wx:if='{{noData}}'></noData>  
+      <view class='list_cell item' wx:for='{{pageData}}' wx:key='index' catchtap='checkDetail' data-id='{{item.orderId}}' data-para='{{item.orderType}}'>
+        <view class='list_head s_row bb plr-20'>
+          <text class='fc-70 fs-28'>{{item.loginstics}} {{item.loginsticsNumber}}</text>
+          <button class='normal_btn confirm_btn bg-white' type='button' catchtap='confirmReceipt' data-id='{{item.orderId}}'>确认收货</button>
+        </view>
+          <view class='cell fs-28 plr-20'>
+            <text class='fc-70'>订单编号：{{item.orderId}}</text>
+            <text class='fc-main' hidden='{{!item.replenish}}'>补</text>    
+          </view>
+          <view class='cell fs-28 plr-20'>
+            <text class='fc-70'>时间：{{item.updateTime}}</text>
+          </view>
+          <view class='plr-20'>
+            <view class='cell fs-28' wx:for='{{item.styleList}}' wx:key='style' wx:for-item='style' wx:for-index='styleIndex'>
+              <text class='fc-70'>款式编号：{{style.number}}</text>
+              <text class='fc-33'>{{style.num}}件</text>    
+            </view>
+          </view>
+          <view class='list_head bt s_row plr-20'>
+            <text class='fc-33 fs-32'>{{item.orderType == '3' ? item.senderBusName : item.depotName}}</text>
+            <text class='fc-70 fs-28'>合计件数: <text class='fc-33'>{{item.total}}</text></text>
+          </view>
+      </view>
+   <loading isShow='{{noData}}'  noMore='{{noMore}}'></loading> 
+      
+  </scroll-view>
+  </view>
+
+</view>
+
+<dialog id='dialogCompon' content='确认收货？' bind:confirmEvent='confirmFn' isShow='{{showConfirm}}'></dialog>  
+

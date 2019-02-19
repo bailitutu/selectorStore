@@ -1,0 +1,65 @@
+.goods_sec{
+  padding:16rpx 20rpx 40rpx;
+  width: 100%;
+  flex: 1;
+}
+.goods_sec_row{
+  width:100%;
+  margin-top:24rpx;
+}
+.goods_sec_cell{
+  height:156rpx;
+  background: #fff;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: space-around;
+  
+}
+.goods_sec_cell:first-child{
+  margin-right:26rpx;
+}
+.goods_sec_cell text{
+  margin-left:50rpx;
+}
+.goods_sec_cell text.crk{
+  margin-left:30rpx;
+}
+.goods_ac{
+  flex: 2;
+  height: 66%;
+  background: #fff;
+  padding:40rpx 30rpx 0;
+}
+.goods_ac_cell{
+  height:204rpx;
+  flex: 1;
+  margin-right:34rpx;
+  box-shadow: 0 0 8rpx #03B463;
+  position: relative;
+  -webkit-border-radius:12rpx;
+  border-radius: 12rpx;
+  padding:20rpx 0;
+}
+ .goods_ac_cell .ac_top_tip{
+  position: absolute;
+  top:-15rpx;
+  right:-15rpx;
+  z-index: 100;
+  background: red;
+  height:36rpx;
+  min-width:36rpx;
+  padding:0 10rpx;
+  text-align: center;
+  border-radius: 18rpx;
+  line-height: 36rpx;
+} 
+.goods_ac_cell:last-child{
+  margin-right:0;
+}
+.ac_cell_icon{
+  height:88rpx;
+  width:88rpx;
+}

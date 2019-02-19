@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "折扣商品",
+    "usingComponents": {
+      "loading": "/components/loading/loading",
+      "topSearch": "/components/search/search",
+      "noData": "/components/noData/noData"
+    }
+}

@@ -1,0 +1,7 @@
+<view class='body bg-white'>
+    <view class='news_info'>
+        <view class='title fc-33 fs-36'>{{pageData.title}} </view>
+        <view class='fc-70 fs-28 mt-50 content'>{{pageData.detail}}</view>
+        <view class='fs-24 fc-b2 tar mt-40'>{{pageData.createTime}}</view>
+    </view>
+</view>

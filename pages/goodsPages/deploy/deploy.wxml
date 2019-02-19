@@ -1,0 +1,57 @@
+ <wxs src="../../filter/filter.wxs" module="filter" /> 
+<view class='body'>
+
+  <view class='list_item' id='list_item'>
+    <scroll-view scroll-y='true' class='list_scroll' style='height:{{scrollH}}px;' bindscrolltolower='moreData'>
+      <noData wx:if='{{noData}}'></noData>  
+
+        <view class='list_cell item' wx:for='{{pageData}}' wx:key='index' catchtap='checkRefund' data-id='{{item.orderId}}'>
+          <view class='list_sec s_row bb'>
+              <text class='fc-33 fs-32'>收货方：{{item.receiverName}}</text>
+              <text class='fc-33 fs-28'>{{filter.orderStatus(item.orderStatus)}}</text>
+          </view>
+          <view class='plr-20'>
+            <view class='cell fs-28' wx:for='{{item.styleList}}' wx:key='style' wx:for-item='style' wx:for-index='styleIndex'> 
+              <text class='fc-70 '>单品编号：{{style.styleId}}</text>
+              <text class='fc-33 '>{{style.num}}件</text>
+            </view>
+          </view>
+          <view class='list_sec cell bt'>
+            <text class='fc-33 fs-28'>选款师：{{item.fbName || '无'}}</text>
+            <view class='fc-70 fs-28'>合计件数: <text class='fc-33'>{{item.total}}件</text></view>
+          </view>
+          <view class='list_sec cell bt'>
+            <view class='fc-b2 fs-24'>{{item.time}}</view>
+            <view class='s_row '>
+                <button class='normal_btn con_btn' type='button' wx:if='{{ item.orderStatus == "5" }}' catchtap='confirmTap' data-id='{{item.orderId}}'>确认</button>
+                <button class='normal_btn send_btn' wx:if='{{ item.orderStatus == "1" ||  item.orderStatus == "5" }}' type='button' catchtap='sendTap' data-id='{{item.orderId}}'>发货</button>
+            </view>
+          </view>
+        </view>
+
+
+      <loading isShow='{{noData}}'  noMore='{{noMore}}'></loading> 
+    </scroll-view>
+  </view>
+</view>
+ 
+<view class='wx_dialog_container' hidden='{{!showSend}}'>
+  <view class='wx-mask'></view>
+  <view class='wx-dialog'>
+    <view class='wx-dialog-content'>
+        <view class='bb input_cell'>
+          <input type='text' placeholder='请输入物流公司名称' bindinput='inputChange' data-type='logName' value='{{logName}}' confirm-type='next' placeholder-class='fc-b2 fs-28'></input>
+        </view>
+        <view class='bb input_cell'>
+          <input type='text' placeholder='请输入物流单号'  bindinput='inputChange' data-type='logNumber' value='{{logNumber}}' confirm-type='done' placeholder-class='fc-b2 fs-28' ></input>
+        </view>
+    </view>
+    <view class='wx-dialog-footer'>
+      <view class='wx-dialog-btn' catchtap='cancelHander'>取消</view>
+      <view class='wx-dialog-btn' catchtap='confirmHander'>确定</view>
+    </view>
+  </view>
+</view>
+
+
+<dialog id='dialogCompon' content='全部调货款式确认已备齐?' bind:confirmEvent='confirmFn' bind:cancelEvent='confirmCancel'></dialog>  

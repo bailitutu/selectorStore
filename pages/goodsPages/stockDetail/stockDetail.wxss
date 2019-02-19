@@ -1,0 +1,44 @@
+.style_info{
+  padding:20rpx 20rpx 0;
+}
+
+.styleImg{
+  margin:0;
+  width:100%;
+  height:600rpx;
+}
+
+.slide-image{
+  margin:0;
+  width:100%;
+  height:600rpx;
+}
+
+.style_cell{
+  height:auto;
+  padding:20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: stretch;
+}
+.style_cell .s_row{
+  width:100%;
+}
+.border_none{
+  border: none;
+}
+.his_cell:last-child{
+  border:none
+}
+.no_pad{
+  padding:0;
+}
+ .label_title{
+  white-space: nowrap;
+  align-self: flex-start;
+}
+.label_text{
+  flex: 3;
+}

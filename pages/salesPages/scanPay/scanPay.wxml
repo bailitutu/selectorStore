@@ -1,0 +1,24 @@
+<view class='body bg-main' wx:if='{{isReady}}'>
+
+  <view class='center'>
+      <view class='inner bra bg-white'>
+        <view class='fc-33 fs-28'>{{title}}</view>
+        <view class='ewmImg'>
+          <image class='full' src='{{codeUrl}}'></image>
+        </view>
+        <view class='price'>￥{{price}}</view>
+        <view class='confirm_btn fc-main bra fs-28' wx:if='{{payType == 2 || payType == 4}}' catchtap='goSuccess' >确认已付款</view>
+        <view class='confirm_btn fc-main bra fs-28' wx:else catchtap='getOrderStatus' >查收</view>
+      </view>
+      <view class='bottom_item1'>
+        <view class='bottom_cell1 '></view>
+      </view>
+      <view class='bottom_item2'>
+        <view class='bottom_cell2'></view>
+      </view>
+
+  
+  </view>
+
+
+</view>

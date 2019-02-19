@@ -1,0 +1,82 @@
+<view class='body body_flex'>
+  <view class='content' >
+    <view class='tac'>
+      <image class='icon_success' src='/images/pay_success.png'></image>
+      <view class='success_text fc-33'>支付成功</view>
+    </view>
+    <view class='item mt-40'>
+        <view class='bb tac shop_logo'>
+          <image class='icon_logo' src='/images/login.png'></image>
+        </view>
+        <view class='cell fs-28'>
+          <text class='fc-70'>打印小票</text>
+          <button type='button' class='normal_btn bg-white print_btn fc-main'  catchtap='handleTap'>手动打印</button>
+        </view>
+        <view class='cell fs-28'>
+          <text class='fc-70 '>店铺名称</text>
+          <text class='fc-33 '>{{pageData.shopName}}</text>
+        </view>
+        <view class='cell fs-28'>
+          <text class='fc-70 '>时间</text>
+          <text class='fc-33 '>{{pageData.time}}</text>
+        </view>
+        <view class='cell fs-28'>
+          <text class='fc-70 '>编号</text>
+          <text class='fc-33 '>{{pageData.number}}</text>
+        </view>
+    </view>
+    <view class='item goods_item'>
+        <view class='goods_cell' wx:for='{{pageData.goodsList}}' wx:key='goods'>
+          <view class='goods_info cell s_row fs-28'>
+              <text class='fc-70'>{{item.goodsName}}</text>
+              <view class='s_row fc-33'>
+                <text>x{{item.goodsNum}}</text>
+                <text class='price_text tar'>￥{{item.goodsPrice}}</text>
+              </view> 
+          </view>
+          <view class='goods_old_price '>
+            <text class='fs-24 mr-20'>原价：</text>
+            <text class='fs-24 fc-70 del_line'>￥{{item.goodsOldPrice}}</text>
+          </view>
+        </view>
+        
+          <view class='goods_total cell s_row fs-28'>
+              <text class='fc-70'>合计数量：</text>
+              <view class='s_row fc-33'>
+                <text class='plr-20'>{{pageData.goodsTotalNum}}</text>
+                <!-- <text class='price_text tar fc-red'>金额：￥{{pageData.goodsTotalPrice}}</text> -->
+              </view> 
+          </view>
+    </view>
+    <view class=' mb-20 item '>
+      <view class='cell fs-28'>
+        <text class='fc-70 '>付款方式</text>
+        <text class='fc-33 '>{{pageData.payType}}</text>
+      </view>
+      <view class='cell fs-28'>
+        <text class='fc-70 '>付款金额</text>
+        <text class='fc-33 '>{{pageData.payPrice}}</text>
+      </view>
+      <view class='cell fs-28' wx:if='{{pageData.memberCard}}'>
+        <text class='fc-70 '>会员卡号</text>
+        <text class='fc-33 '>{{pageData.memberCard}}</text>
+      </view>
+      <view class='cell fs-28' wx:if='{{pageData.memberCard}}'>
+        <text class='fc-70 '>本次积分</text>
+        <text class='fc-33 '>{{pageData.memberPoint}}分</text>
+      </view>
+      <view class='cell fs-28' wx:if='{{pageData.memberCard}}'>
+        <text class='fc-70 '>累计积分</text>
+        <text class='fc-33 '>{{pageData.memberTotalPoint}}分</text>
+      </view>
+    
+    </view>
+  
+  
+  
+ </view>
+  
+  <view class='footer_full_btn' catchtap='goPage'>
+      返回首页
+    </view>
+</view>

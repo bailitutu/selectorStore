@@ -1,0 +1,7 @@
+<view class='list_cell_content' catchtap='showTap'  data-show='{{isShow}}'  >
+    <view class='list_cell_top s_row bt bb {{ !isShow ? "bc-fff" : ""}} '>
+        <text class='fc-b2 fs-24'>{{time}}</text>
+        <image class=' icon_down {{ isShow ? "rotate" : "" }}' src='/images/down.png'></image>
+    </view>
+      <slot wx:if='{{isShow}}'></slot>
+</view>

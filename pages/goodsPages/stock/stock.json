@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "库存查询",
+  "usingComponents": {
+    "loading": "/components/loading/loading",
+    "topSearch": "/components/search/search",
+    "dialog": "/components/Dialog/dialog",
+    "noData": "/components/noData/noData"
+  }
+}

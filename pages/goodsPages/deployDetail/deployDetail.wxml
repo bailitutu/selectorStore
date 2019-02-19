@@ -1,0 +1,109 @@
+<view class='body body_flex'>
+  <view class='content'>
+      <view class='bra item mt-20 bg-white'>
+        <view class='bb'>
+          <shopInfo id="shopInfo" 
+            showLeft='true' 
+            leftText='发货方'
+            shopName='{{pageData.senderInfo.senderName}}' 
+            shopImg ='{{pageData.senderInfo.senderHead}}'
+            shopAddress='{{pageData.senderInfo.senderAddress}}'
+            showPeo = 'true'
+            shopPeo = '{{pageData.senderInfo.senderPeople}}'
+            shopPhone = '{{pageData.senderInfo.senderPhone}}'
+          
+          ></shopInfo>
+        </view>
+        <view>
+          <shopInfo id="shopInfo" 
+            showLeft='true' 
+              leftText='收货方'
+              shopName='{{pageData.receiverInfo.receiverName}}' 
+              shopImg ='{{pageData.receiverInfo.receiverHead}}'
+              shopAddress='{{pageData.receiverInfo.receiverAddress}}'
+              showPeo = 'true'
+              shopPeo = '{{pageData.receiverInfo.receiverPeople}}'
+              shopPhone = '{{pageData.receiverInfo.receiverPhone}}'
+          ></shopInfo>
+        </view>
+      </view>
+      <!-- 物流模块 -->
+      <view class='logistic_compo plr-20' wx:if='{{pageData.orderInfo.orderStatus != "1"}}'>
+        <view class='logistic_title'>
+          <image src='/images/logo.png'></image>
+          <text>{{ pageData.loginsticsInfo.loginstics}}  {{pageData.loginsticsInfo.loginsticsNumber}}</text>
+        </view>
+        <view class='logistic_data bg-white fc-33 fs-32 plr-20 bra'>
+          <colla title='物流记录' noTopBorder='{{true}}'>
+            <view class='logisitc_list mt-20'>
+              <view class='logisitc_list_cell'  wx:for='{{pageData.loginsticsInfo.loginsticsArray}}' wx:key='logis'  >
+                <view class='cell_inner'>
+                  <view class='sel_icon'>
+                    <image  class='full' src='/images/icon_selected.png' wx:if='{{!index}}'></image>
+                  </view>
+                  <text class='fs-28 fc-33'>{{item.time}}  {{item.msg}}</text>
+                </view>
+              </view>
+            </view>
+          </colla>
+        </view>
+      </view>  
+
+      <view class='item mb-20'>
+        <view class='cell fs-28 s_row'>
+          <text class='fc-70'>订单编号</text>
+          <text class='fc-33'>{{pageData.orderInfo.orderId}}</text>
+        </view>
+        <view class='cell fs-28 s_row'>
+          <text class='fc-70'>发起时间</text>
+          <text class='fc-33'>{{pageData.orderInfo.createTime}}</text>
+        </view>
+        <view class='cell fs-28 s_row'>
+          <text class='fc-70'>选款师</text>
+          <text class='fc-33'>{{pageData.orderInfo.fbName}}</text>
+        </view>
+        <view class='cell fs-28 s_row'>
+          <text class='fc-70'>操作类型</text>
+          <text class='fc-33'>{{pageData.orderInfo.orderType}}</text>
+        </view>
+        <view class='cell fs-28 s_row border_none'>
+          <text class='fc-70'>总金额</text>
+          <text class='fc-red'>￥{{pageData.orderInfo.price}}</text>
+        </view>
+        <view >
+          <colla title='总数' content='{{pageData.orderInfo.total}}件' showContent='true'>
+            <view class='cell fs-28 s_row' wx:for='{{pageData.goodsList}}' wx:key='goods' >
+              <text class='fc-70'>单品编号：{{item.number}}</text>
+              <text class='fc-33'>{{item.num}}件</text>
+            </view>
+          </colla>
+        </view>
+
+      </view>
+  </view>
+
+  <view class=' bg-white bst'>
+    <view class='input_cell cell fs-28' wx:if='{{pageData.orderInfo.orderStatus == "1" || pageData.orderInfo.orderStatus == "5"}}' >
+      <text class='fc-70 h_full'>快递公司</text>
+      <input type='text' placeholder='请输入'  bindinput='inputChange' data-type='logName' value='{{logName}}' confirm-type='next' class='fc-33'  placeholder-class='fc-b2 fs-28'></input>
+    </view>
+      <view class='input_cell cell fs-28 ' wx:if='{{pageData.orderInfo.orderStatus == "1" || pageData.orderInfo.orderStatus == "5"}}'>
+      <text class='fc-70 '>快递单号</text>
+      <input type='text' placeholder='请输入' bindinput='inputChange' data-type='logNumber' value='{{logNumber}}' confirm-type='done' placeholder-class='fc-b2 fs-28' class='fc-33'></input>
+    </view> 
+
+    <view class='btn_group bg-main fs-32' wx:if='{{pageData.orderInfo.orderStatus == "5"}}'>
+      <view class='btn_cell fc-fff' catchtap='confirmTap'>确认</view>
+      <view class='btn_cell fc-fff' catchtap='sendTap'>发货</view>
+    </view>
+
+    <view class='footer_full_btn' catchtap='sendTap' wx:if='{{pageData.orderInfo.orderStatus == "1"}}'>发货</view>
+    <view class='footer_full_btn disabled' catchtap='confirmReceipt' wx:if='{{pageData.orderInfo.orderStatus == "2"}}'>已发货</view>
+        <view class='footer_full_btn disabled'  wx:if='{{pageData.orderInfo.orderStatus == "3"}}'>已收货</view>
+  </view>
+</view>
+<dialog id='dialogCompon' content='全部调货款式确认已备齐?' bind:confirmEvent='confirmFn' bind:cancelEvent='confirmCancel'></dialog>  
+
+
+
+

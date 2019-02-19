@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "调货详情",
+  "usingComponents": {
+    "dialog": "/components/Dialog/dialog",
+    "colla": "/components/colla/colla",
+    "shopInfo": "/components/shopInfo/shopInfo"
+  }
+}

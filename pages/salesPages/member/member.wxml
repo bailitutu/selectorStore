@@ -1,0 +1,32 @@
+<view class='body body_flex'>
+
+  <topSearch id='topSearch' holderText='搜索名称' noBorder='true' bind:searchTap="searchMember"></topSearch>
+  <view class='list_item' id='list_item'>
+    <scroll-view class='list_scroll' style='height:{{scrollH}}px' scroll-y='true' bindscrolltolower='moreData'>
+      <noData wx:if='{{noData}}'></noData>  
+      <view class='item' wx:for='{{list}}' wx:key='member'  catchtap='checkMember' data-id='{{item.id}}'>
+          <view class='list_cell s_row fc-33 fs-28 bb'>会员号：{{item.number}}</view>
+          <view class='list_inner'>
+              <image src='/images/cang.png' class='list_img bra'></image>
+              <view class='list_content '>
+                <text class='fc-33 fs-28'>会员姓名：{{item.name}}</text>
+                <text class='fc-70 fs-24'>手机号：{{item.phone}}</text>
+                <text class='fc-70 fs-24'>会员等级：{{item.level}}</text>
+              </view>
+          </view>
+          <view class='list_cell s_row fc-70 bt'>
+              <text class='fs-24'>注册商户：{{item.regBusName}}</text>
+              <text class='fs-24'>注册日期：<text class='fs-22'>{{item.regTime}}</text></text>
+          </view>
+      </view>
+  
+      <loading isShow='{{noData}}'  noMore='{{noMore}}'></loading>
+    </scroll-view>
+  </view>
+
+
+    <view class='footer_full_btn' catchtap='goPage' data-url='添加会员'>
+      添加会员
+    </view>
+
+</view>

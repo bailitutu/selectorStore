@@ -1,0 +1,59 @@
+@import '../waitReceipt/waitReceipt';
+
+
+/* 二分展示 */
+.full_two_item{
+  width:100%;
+  height:140rpx;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.full_two_item .full_two_cell{
+  width:50%;
+  height:100%;
+  padding:20rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.full_two_item .full_two_cell:first-child{
+  border-right:1px solid #e2e2e2;
+}
+
+
+
+/* 列表
+ */
+.list_inner{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: flex-start;
+  align-content: stretch;
+  padding:20rpx;
+}
+.list_head{
+  width:120rpx;
+  height: 120rpx;
+}
+.list_content{
+  margin-left:20rpx;
+  height: 180rpx;
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: stretch;
+  }
+
+.w_full{
+  width:100%
+}
+.w_full text{
+  width:50%;
+}

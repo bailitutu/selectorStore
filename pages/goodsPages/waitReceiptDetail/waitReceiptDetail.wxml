@@ -1,0 +1,109 @@
+<view class='body body_flex' wx:if='{{isReady}}'>
+  <view class='content'>
+      <view class='bra item mt-20 bg-white' wx-if='{{orderType == 3 || orderType == 4 }}'>
+        <view class='bb'>
+          <shopInfo id="shopInfo" 
+            showLeft='true' 
+            leftText='发货方'
+            shopName='{{pageData.senderInfo.senderName}}' 
+            shopImg ='{{pageData.senderInfo.senderHead}}'
+            shopAddress='{{pageData.senderInfo.senderAddress}}'
+            showPeo = 'true'
+            shopPeo = '{{pageData.senderInfo.senderPeople}}'
+            shopPhone = '{{pageData.senderInfo.senderPhone}}'
+          
+          ></shopInfo>
+        </view>
+        <view>
+          <shopInfo id="shopInfo" 
+            showLeft='true' 
+              leftText='收货方'
+              shopName='{{pageData.receiverInfo.receiverName}}' 
+              shopImg ='{{pageData.receiverInfo.receiverHead}}'
+              shopAddress='{{pageData.receiverInfo.receiverAddress}}'
+              showPeo = 'true'
+              shopPeo = '{{pageData.receiverInfo.receiverPeople}}'
+              shopPhone = '{{pageData.receiverInfo.receiverPhone}}'
+          ></shopInfo>
+        </view>
+      </view>
+      <view class='bra item mt-20 bg-white' wx-if='{{orderType == 2 || orderType == 5}}'>
+        <view>
+          <shopInfo id="shopInfo" 
+              showLeft='{{true}}' 
+              leftText='发货方'
+              shopName='{{pageData.depotName}}' 
+              shopImg ='/images/cang.png'
+              shopAddress='{{pageData.depotAddress}}'
+              showPeo = '{{true}}'
+              shopPeo = '{{pageData.depotPeople}}'
+              shopPhone = '{{pageData.depotPhone}}'
+          ></shopInfo>
+        </view>
+      </view>
+      <!-- 物流模块 -->
+      <view class='logistic_compo plr-20'>
+        <view class='logistic_title'>
+          <image src='/images/logo.png'></image>
+          <text>{{ pageData.loginsticsInfo.loginstics}}  {{pageData.loginsticsInfo.loginsticsNumber}}</text>
+        </view>
+        <view class='logistic_data bg-white fc-33 fs-32 bra plr-20'>
+          <colla title='物流记录' noTopBorder='{{true}}' >
+            <view class='logisitc_list mt-20'>
+              <view class='logisitc_list_cell'  wx:for='{{pageData.loginsticsInfo.loginsticsArray}}' wx:key='logis'  >
+                <view class='cell_inner'>
+                  <view class='sel_icon'>
+                    <image src='/images/icon_selected.png' wx:if='{{!index}}'></image>
+                  </view>
+                  <text class='fs-28 fc-33'>{{item.time}}  {{item.msg}}</text>
+                </view>
+              </view>
+            </view>
+          </colla>
+
+          <!-- <view class='data_title'>物流记录</view>
+          <view class='logisitc_list'>
+            <view class='logisitc_list_cell'  wx:for='{{pageData.loginsticsInfo.loginsticsArray}}' wx:key='logis'  >
+              <view class='cell_inner'>
+                <view class='sel_icon'>
+                  <image src='/images/icon_selected.png' wx:if='{{!index}}'></image>
+                </view>
+                <text class='fs-28 fc-33'>{{item.time}}  {{item.msg}}</text>
+              </view>
+            </view>
+          </view> -->
+
+        </view>
+      </view>  
+
+      <view class='item mb-20'>
+        <view class='cell fs-28 s_row'>
+          <text class='fc-70'>订单编号</text>
+          <text class='fc-33'>{{pageData.orderInfo.number}}</text>
+        </view>
+        <view class='cell fs-28 s_row'>
+          <text class='fc-70'>操作类型</text>
+          <text class='fc-33'>{{pageData.orderInfo.orderType}}</text>
+        </view>
+        <view class='cell fs-28 s_row'>
+          <text class='fc-70'>总金额</text>
+          <text class='fc-red'>￥{{pageData.orderInfo.price}}</text>
+        </view>
+        <view class='cell fs-28 s_row' catchtap='checkGoodsDetail'>
+          <text class='fc-70'>总数</text>
+          <view class='s_row '>
+            <text class='fc-33 mr-20'>{{pageData.orderInfo.num}}件</text>
+            <image class='icon_go' src='/images/Shape.png'></image>
+          </view>
+        </view>
+
+      </view>
+      
+
+      <view class='foot_tips fc-70 fs-24 mb-20 tac' hidden='{{pageData.isFeed}}' catchtap='feedBack' >如实际收货与列表不符可反馈发货方 <text class='fc-main'>立即反馈</text></view>
+  </view>
+  <view class='footer_full_btn' catchtap='confirmReceipt'>确认收货</view>
+</view>
+<dialog id='dialogCompon' content='确认收货？' bind:confirmEvent='confirmFn' ></dialog>  
+
+

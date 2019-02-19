@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "调货通知",
+  "usingComponents": {
+    "loading": "/components/loading/loading",
+    "dialog": "/components/Dialog/dialog",
+    "noData": "/components/noData/noData"
+  }
+}

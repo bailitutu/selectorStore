@@ -1,0 +1,9 @@
+.colorList{
+  padding:0;
+  margin-bottom:20rpx;
+  overflow: hidden;
+}
+.colorList .cell{
+  border:none;
+  
+}

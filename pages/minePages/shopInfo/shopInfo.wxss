@@ -1,0 +1,12 @@
+.item .cell:last-child{
+  border:none;
+}
+.shop_ewm{
+  width:auto;
+  height:100%;
+}
+.ewm{
+  width:60rpx;
+  height:60rpx;
+  
+}

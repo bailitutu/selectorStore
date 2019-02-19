@@ -1,0 +1,50 @@
+.upload_item{
+  margin:30rpx 20rpx;
+}
+
+.img_sec{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content:flex-start;
+  align-items: center; 
+  align-content: stretch;
+}
+.img_sec_cell{
+  width:25%;
+  height:auto;
+  margin-bottom:20rpx;
+  position: relative;
+}
+.add_img{
+  border:1px solid #b2b2b2;
+}
+.img_sec_cell>image{
+  width:152rpx;
+  height:152rpx;
+  margin-left:10rpx;
+}
+.del_btn{
+  width:100%;
+  height: 100%;
+  text-align: center;
+  position:absolute;
+  top:0;
+  left:0;
+  z-index: 100;
+  line-height: 24rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.del_btn>image{
+  width:32rpx;
+  height:32rpx;
+}
+.input_area{
+  height:200rpx;
+  padding:20rpx 0;
+  width:100%;
+  font-size:26rpx;
+}
+

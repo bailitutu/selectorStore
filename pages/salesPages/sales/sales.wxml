@@ -1,0 +1,171 @@
+ <wxs src="../../filter/filter.wxs" module="filter" /> 
+<view class='body body_flex'>
+  <topTab id='topTab' tabOne='销售单' tabTwo='退货单'   bind:tabTap='tabTap'></topTab>
+  <!-- 销售 -->
+  <view class='match_item plr-10' hidden='{{current == 2 || saleFilter == 0 || saleFilter == 5}}' >
+    <view class='match_cell'>
+      <image src='/images/Bitmap1.png' style='width:64rpx;'></image>
+      <view class='match_inner'>
+        <text class='fc-main fs-32'>{{totalNum}}件</text>
+        <text  class='fc-33 fs-24'>合计销售件数</text>
+      </view>
+    </view>
+    <view class='match_cell'>
+      <image src='/images/Bitmap.png' style='width:86rpx;'></image>
+      <view class='match_inner'>
+        <text class='fc-main fs-32'>{{totalPrice}}元</text>
+        <text class='fc-33 fs-24'>合计销售额</text>
+      </view>
+    </view>
+  </view>
+  <!-- 公共 -->
+  <view class='search_item'>
+    <view class='search_inner bra ss_row'>
+      <image src='/images/search_black.png'  catchtap='search'></image>
+      <input type='text' class='fc-33 fs-28 search_input' placeholder='输入销售单号/会员名/手机号' bindinput='inputSearch'  value='{{query}}' placeholder-class='fc-b2 fs-28' ></input>
+    </view>
+  </view>
+  <!-- 销售 -->
+  <view class='list_tab bg-white s_row bsf' hidden='{{ current != 1 }}'>
+      <view class='list_tab_cell {{saleFilter == "1" ? "active" : ""}}' data-type='1' catchtap='filterTap' >今日</view>
+      <view class='list_tab_cell {{saleFilter == "2" ? "active" : ""}}' data-type='2' catchtap='filterTap'>昨日</view>
+      <view class='list_tab_cell {{saleFilter == "3" ? "active" : ""}}' data-type='3' catchtap='filterTap'>7天</view>
+      <view class='list_tab_cell {{saleFilter == "4" ? "active" : ""}}' data-type='4' catchtap='filterTap'>30天</view>
+      <view class='list_tab_cell {{saleFilter == "5" ? "active" : ""}}' data-type='5' catchtap='filterTap'>未付款</view> 
+  </view>
+
+  <!-- 退货 -->
+  <view class='list_tab bg-white s_row bsf' hidden='{{ current != 2 }}'>
+      <view class='list_tab_cell {{refundFilter == "1" ? "active" : ""}}' data-type='1' catchtap='filterTap' >今日</view>
+      <view class='list_tab_cell {{refundFilter == "2" ? "active" : ""}}' data-type='2' catchtap='filterTap'>昨日</view>
+      <view class='list_tab_cell {{refundFilter == "3" ? "active" : ""}}' data-type='3' catchtap='filterTap'>7天</view>
+      <view class='list_tab_cell {{refundFilter == "4" ? "active" : ""}}' data-type='4' catchtap='filterTap'>30天</view>
+  </view>
+
+  <!-- 销售单 -->
+  <view class='list_item' id='sale_item'  hidden='{{ current != 1 }}'>
+    <scroll-view class='list_scroll' scroll-y='true' style='height:{{scrollH}}px;' bindscrolltolower='moreSaleData' >
+    <noData wx:if='{{saleNoData}}'></noData>  
+    
+    <view class='list_cell bra'  wx:for='{{saleList}}' wx:key='sale' >
+        <view  class='list_cell_head s_row'>
+          <image src='{{item.goodsHead}}' lazy-load='true' class='goodsImg bra'></image>
+          <view class='list_cell_head_info '>
+            <view class='fs-32 s_row'>
+                <text class='fc-33'> {{item.goodsName}}</text>
+                <text class='fc-main fs-28'> {{ item.goodsStatus == 3 ? "未付款" : "已付款"}}</text>
+            </view>
+            <view class='s_row'>
+              <text class='fc-70 fs-24'>{{item.goodsColor}}-{{item.goodsSize}}码 *{{item.goodsNum}}</text>
+              <text class='fc-70 fs-24'>实销价：<text class='fc-red fc-28'>￥{{item.goodsTotalPrice}}</text> </text>
+            </view>
+          </view>
+        </view>
+
+        <sales time='{{item.time}}'>
+         <view class='list_cell_li'>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>单品编号</text>
+                  <text class='fc-33 fs-28'>{{item.goodsId}}</text>
+                </view>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>销售单号</text>
+                  <text class='fc-33 fs-28'>{{item.salesSlipNumber}}</text>
+                </view>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>零售价</text>
+                  <text class='fc-33 fs-28'>{{item.goodsPrice}}</text>
+                </view>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>折扣价</text>
+                  <text class='fc-33 fs-28'>{{item.goodsDiscountPrice || '无'}}</text>
+                </view>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>客户名称</text>
+                  <text class='fc-33 fs-28'>{{item.memberName}}</text>
+                </view>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>手机号</text>
+                  <text class='fc-33 fs-28'>{{item.memberPhone}}</text>
+                </view>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>是否付款</text>
+                  <text class='fc-33 fs-28'>{{item.goodsStatus== 3 ? "未付款" : "已付款"}}</text>
+                </view>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>付款方式</text>
+                  <text class='fc-33 fs-28'>{{filter.payType(item.payType)}}</text>
+                </view>            
+            </view>
+        </sales>
+    </view>
+    
+      <loading isShow='{{saleNoData}}'  noMore='{{saleNoMore}}'></loading>
+  </scroll-view>
+  </view>
+  <!-- 退货单 -->
+  <view class='list_item' id='refund_item'  hidden='{{ current != 2 }}'>
+    <scroll-view class='list_scroll' style='height:{{scrollHH}}px;' scroll-y='true' bindscrolltolower='moreRefundData' >
+    <noData wx:if='{{refundNoData}}'></noData>  
+    
+      <view class='list_cell bra'  wx:for='{{refundList}}' wx:key='refund' >
+        <view  class='list_cell_head s_row'>
+          <image src='{{item.goodsHead}}' lazy-load='true' class='goodsImg bra'></image>
+          <view class='list_cell_head_info '>
+            <view class='fs-32 s_row'>
+                <text class='fc-33'> {{item.goodsName}}</text>
+            </view>
+            <view class='s_row'>
+              <text class='fc-70 fs-24'>{{item.goodsColor}}-{{item.goodsSize}}码 *{{item.goodsNum}}</text>
+              <text class='fc-70 fs-24'>退款金额：<text class='fc-red fc-28'>￥{{item.goodsRefundPrice}}</text> </text>
+            </view>
+          </view>
+        </view>
+
+        <sales time='{{item.time}}'>
+         <view class='list_cell_li'>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>单品编号</text>
+                  <text class='fc-33 fs-28'>{{item.goodsId}}</text>
+                </view>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>销售单号</text>
+                  <text class='fc-33 fs-28'>{{item.salesSlipNumber}}</text>
+                </view>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>零售价</text>
+                  <text class='fc-33 fs-28'>{{item.goodsPrice}}</text>
+                </view>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>完成利润分成</text>
+                  <text class='fc-33 fs-28'>{{item.isFinish ? "是" :"否"}}</text>
+                </view>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>客户名称</text>
+                  <text class='fc-33 fs-28'>{{item.memberName}}</text>
+                </view>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>手机号</text>
+                  <text class='fc-33 fs-28'>{{item.memberPhone}}</text>
+                </view>
+                <view class='s_row'>
+                  <text class='fc-70 fs-28'>备注信息</text>
+                  <text class='fc-33 fs-28'>{{item.notes}}</text>
+                </view>            
+            </view>
+        </sales>
+    </view>
+    
+    
+      <loading isShow='{{refundNoData}}'  noMore='{{refundNoMore}}'></loading>
+  </scroll-view>
+  </view>
+
+
+
+
+
+
+
+
+</view>

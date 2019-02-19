@@ -1,0 +1,97 @@
+@import "/components/common/common";
+.sizeList_compo{
+  width: 100%;
+  background: #fff;
+}
+.sizeList_compo .size_title{
+  height:88rpx;
+  border-top:1px solid #e2e2e2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.size_color{
+  height:100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.size_color .color_label{
+  width:56rpx;
+  height: 56rpx;
+  margin:0 20rpx;
+}
+.size_total{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding:0 20rpx;
+}
+.sizeNum{
+  font-size:28rpx;
+}
+.size_total image{
+  height:14rpx;
+  width:26rpx;
+  margin-left:20rpx;
+}
+.sizeList_inner{
+  width:100%;
+  padding:0 20rpx;
+  border-top:1px solid #e2e2e2;
+  
+}
+.size_list_cell{
+  width: 100%;
+  height:88rpx;
+  display: flex;
+  flex-direction:row;
+  justify-content:space-between;
+  align-items:center;
+}
+.size_list_cell:last-child{
+  border:none;
+}
+.rotate{
+  transform: rotate(180deg);
+}
+/*弹窗模块
+ */
+.pop_mask{
+  position: fixed;
+  z-index: 20000;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+.pop_content{
+  width:400rpx;
+  position: fixed;
+  min-height: 300rpx;
+  top:50%;
+  left:50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 30000;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items:stretch;
+  align-content: stretch
+}
+.cell{
+  height:80rpx;
+  border-bottom:1px solid #e2e2e2;
+}
+.cell:last-child{
+  border:none;
+}
+.noInfo{
+  height: 100%;
+  line-height: 300rpx;
+  text-align: center;
+}

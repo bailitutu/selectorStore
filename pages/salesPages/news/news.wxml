@@ -1,0 +1,20 @@
+<view class='body body_flex' >
+  <view id='list_item' class='list_item'>
+    <scroll-view class='list' scroll-y='true' style='height:{{scrollH}}px;'>
+     <noData wx:if='{{noData}}'></noData>  
+
+    <view class='list_cell bra bg-white' wx:for='{{list}}' wx:key='index' catchtap='checkNews' data-id='{{item.id}}' data-index='{{index}}' >
+      <view class='list_title  one_line fc-33 fs-32 {{item.isRead == "2" ? "" : "active"}}'>
+        {{item.title}} 
+      </view>
+      <text class='fc-b2 fs-22 createTime'>{{item.createTime}}</text>
+    </view>
+     
+      <loading isShow='{{noData}}' noMore='{{noMore}}'></loading>
+  </scroll-view>
+  </view>
+
+  <view class='footer_btn bg-main' catchtap='allRead'>
+    全部已读
+  </view>
+</view>

@@ -1,0 +1,25 @@
+.list_item{
+  height:100%;
+  width: 100%;
+  flex: 2;
+  display: flex;
+}
+.list_scroll{
+  width:100%;
+  white-space: nowrap;
+}
+.list_cell{
+  padding:0;
+}
+.list_sec{
+  height: 100rpx;
+  padding:0 20rpx;
+}
+.reason_sec.cell{
+  overflow: hidden;
+  height: auto;
+  min-height: 100rpx;
+  padding:10rpx 20rpx;
+  flex-wrap: warp;
+  line-height: 60rpx;
+}

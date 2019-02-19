@@ -1,0 +1,10 @@
+.news_info{
+  padding:40rpx; 
+}
+.news_info .title{
+  text-align: center;
+}
+.news_info .content{
+  line-height: 1.5;
+  word-break: break-all;
+}

@@ -1,0 +1,41 @@
+
+<view class='body body_flex'>
+  <topSearch id='topSearch' holderText='输入商品名/编号' bind:searchTap="searchTap"></topSearch>
+    <view class='filter_item bsf'>
+        <view class='filter_cell' catchtap='pickingFilter'>
+          <picker bindchange="bindPickerChange" value="{{typeIndex}}" range="{{typeList}}">
+            <view class="picker fc-70 fs-28">
+              {{typeList[typeIndex]}}
+            </view>
+          </picker>
+          <image src='/images/down.png'></image>
+        </view>
+    </view>
+  <view class='list_item' id='list_item'>
+    <scroll-view  class='list_scroll' scroll-y='true'  style='height:{{scrollH}}px' bindscrolltolower='moreData'>
+    <noData wx:if='{{noData}}'></noData>  
+      <view class='list_cell item' wx:for='{{pageData}}' wx:key='index' catchtap='checkDetail' data-id='{{item.historyId}}'>
+          <view class='list_inner s_row bb'>
+            <image class='list_img bra' src='{{item.styleHead}}'></image>
+            <view class='list_content'>
+                <text class='fc-33 fs-32'>{{item.styleName}}</text>
+                <text class='fc-70 fs-24'>款式编号：{{item.number || '无'}}</text>
+                <view class='fs-24 s_row w_full'>
+                  <text class='fc-70'> {{item.operateType}}：<text class='fc-main'>{{item.num}} 件</text></text>
+                  <text class='fc-70'>{{item.operaTime}}</text>
+                </view>
+            </view>
+          </view>
+          <view class='s_row cell plr-20'>
+              <text class='fc-70 fs-28'>{{item.loginstics}} {{item.loginsticsNumber}}</text>
+          </view>
+      </view>
+
+      <loading isShow='{{noData}}'  noMore='{{noMore}}'></loading> 
+      
+    </scroll-view>
+  </view>
+
+</view>
+
+

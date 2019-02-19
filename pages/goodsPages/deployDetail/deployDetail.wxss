@@ -1,0 +1,40 @@
+@import '../waitReceiptDetail/waitReceiptDetail';
+.border_none{
+  border:none;
+}
+.input_cell{
+  padding:20rpx 40rpx;
+
+}
+.input_cell>text{
+  height: 100%;
+  line-height: 48rpx;
+}
+.input_cell input{
+  flex: 3;
+  margin-left:80rpx;
+}
+
+/* 底部按钮 */
+.btn_group{
+  height:88rpx;
+  padding:8rpx 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn_group .btn_cell{
+  height:100%;
+  width:50%;
+  text-align: center;
+  line-height: 72rpx;
+}
+.btn_group .btn_cell:first-child{
+  border-right:1px solid #fff;
+
+}
+
+.disabled{
+  background: #b2b2b2;
+}

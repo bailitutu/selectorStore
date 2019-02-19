@@ -1,0 +1,129 @@
+/* 匹配 */
+.match_item{
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  padding:20rpx 20rpx 0;
+}
+.match_item .match_cell{
+  height:156rpx;
+  background: #fff;
+  flex: 1;
+  margin-right:20rpx;
+  padding:20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  border-radius: 12rpx;
+}
+.match_item .match_cell:last-child{
+  margin:0;
+}
+.match_cell>image{
+  height:100%;
+  margin-right:20rpx; 
+}
+.match_cell .match_inner{
+  height:100%;
+  display: flex;
+  flex-direction:column;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+
+/* 搜索部分
+ */
+.search_item{
+  width: 100%;
+}
+.search_item .search_inner{
+  height:76rpx;
+  margin:20rpx;
+  background: #fff;
+}
+.search_inner>image{
+  width: 40rpx;
+  height: 40rpx;
+  margin:0 20rpx ;
+}
+.search_input{
+  width:100%;
+  margin-right:20rpx;
+}
+
+/* 筛选部分 */
+
+
+.list_tab{
+  height:88rpx;
+  width:100%; 
+  background: #fff;
+  justify-content: flex-start;
+}
+
+.list_tab_cell{
+  font-size:28rpx;
+  color:#333;
+  padding:10rpx 40rpx;
+}
+.list_tab_cell.active{
+  color: #03A863;
+}
+
+
+
+.list_item{
+  height:100%;
+  width: 100%;
+  flex: 2;
+  display: flex;
+}
+
+
+.list_scroll{
+  width:100%;
+  white-space: nowrap;
+}
+
+.list_cell{
+  margin:20rpx;
+  background: #fff;
+}
+.goodsImg{
+  width:120rpx;
+  height:120rpx;
+  margin-right:20rpx;
+  
+}
+.list_cell_head{
+  height:172rpx;
+  width:100%;
+  padding:30rpx;
+}
+.list_cell_head_info{
+  height:100%;
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  align-items: stretch;
+  align-content: space-between;
+}
+.list_cell_head_info>view{
+  width:100%;
+}
+
+.list_cell_li{
+  width:100%;
+}
+.list_cell_li>view{
+  padding:20rpx;
+}
+
+

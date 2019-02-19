@@ -1,0 +1,64 @@
+<view class='body' wx:if='{{isReady}}'>
+  <view class='style_info bg-white '>
+      <swiper  class='styleImg ' indicator-dots="true" indicator-color='rgba(3,168,99,0.5)' indicator-active-color='#03a863'
+         >
+        <block wx:for='{{pageInfo.imgList}}' wx:key='index'>
+          <swiper-item >
+            <image src='{{item.imgUrl}}' class="slide-image bra" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class='style_cell plr-20'>
+          <view class='fc-33 fs-32'>{{pageInfo.styleName}}</view>
+          <view class='fs-28 fc-70'>款式编号：{{pageInfo.styleNumber}} </view>
+          <view class='s_row fs-28 s_row'>
+              <view class='fc-70'> 单款单色：<text class='fc-main'>{{pageInfo.colorNum}} 个</text> </view>
+              <view class='fc-70'> 零售价：<text class='fc-red'>￥{{pageInfo.price || '0.00'}}</text> </view>
+          </view>
+          <view class='fs-28 fc-70 s_row'><text class='label_title'>款式标签：</text><text class='label_text'>{{labelDetail}}</text></view>
+      </view>
+  </view>
+
+  <view class='item no_pad'>
+    <view class='cell border_none plr-20'>
+      <text class='fc-70 fs-28'>当前库存量：</text>
+      <text class='fc-70 fs-28'>{{pageInfo.total}} 件</text>
+    </view>
+    <sizeList wx:for='{{ pageInfo.colorList}}' canShow='true'  wx:for-item='colorInfo' cell='{{colorInfo}}'  wx:key='colorIndex' ></sizeList>
+  </view>
+
+  <view class='item no_pad'>
+    <view class='cell border_none plr-20'>
+      <text class='fc-70 fs-28'>在途数量</text>
+      <text class='fc-70 fs-28'>{{pageInfo.onRoadNum}} 件</text>
+    </view>
+    <sizeList wx:for='{{ pageInfo.onRoadList}}'  wx:for-item='colorInfo' cell='{{colorInfo}}'  wx:key='colorIndex' ></sizeList>
+  </view>
+  <view class='item mb-20 '>
+    <colla title='查看流水' noTopBorder='true'>
+        <view class='plr-20 his_cell bb' wx:for='{{pageInfo.goodsList}}' wx:key='goods' wx:for-item='goods'> 
+          <view class='cell border_none'>
+              <text class='fc-70 fs-28'>单品编号</text>
+              <text class='fc-33 fs-28'>{{goods.id}}</text>
+          </view>
+          <view class='cell border_none'>
+              <text class='fc-70 fs-28'>时间</text>
+              <text class='fc-33 fs-28'>{{goods.time}}</text>
+          </view>
+          <view class='cell border_none'>
+              <text class='fc-70 fs-28'>操作</text>
+              <text class='fc-33 fs-28'>{{goods.type}}: {{goods.num}}</text>
+          </view>
+        </view>
+
+    </colla>
+  </view>
+ </view>
+
+
+
+
+
+
+
+

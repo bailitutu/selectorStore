@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "商户待收货",
+    "usingComponents": {
+      "dialog": "/components/Dialog/dialog",
+      "colla": "/components/colla/colla",
+      "shopInfo": "/components/shopInfo/shopInfo"
+    }
+}
